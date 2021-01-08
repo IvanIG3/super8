@@ -2,6 +2,7 @@ import Head from 'next/head';
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/globals.css';
 import Theme from '../styles/Theme';
+import '../translations';
 
 const MyApp = ({ Component, pageProps }) => {
 
