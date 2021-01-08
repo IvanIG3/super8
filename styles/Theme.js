@@ -11,8 +11,8 @@ const theme = {
     fonts: ["sans-serif", "Roboto"],
     fontSizes: {
         small: "1em",
-        medium: "1.2em",
-        large: "1.4em"
+        medium: "1.05em",
+        large: "1.1em"
     }
 };
 
