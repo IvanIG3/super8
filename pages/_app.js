@@ -1,7 +1,19 @@
-import '../styles/globals.css'
+import Head from 'next/head';
+import '../styles/globals.css';
+import Theme from '../styles/Theme';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+const MyApp = ({ Component, pageProps }) => {
 
-export default MyApp
+    return (
+        <>
+            <Head>
+                <title>Super8</title>
+            </Head>
+            <Theme>
+                <Component {...pageProps} />
+            </Theme>
+        </>
+    );
+};
+
+export default MyApp;
