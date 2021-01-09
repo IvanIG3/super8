@@ -4,15 +4,9 @@ const theme = {
     colors: {
         secondary: '#752b00',
         primary: '#f7a000',
-        light: '#839496',
+        light: '#e4e4e4',
         dark: '#002630',
-        body: '#d0d0d0',
-    },
-    fonts: ["sans-serif", "Roboto"],
-    fontSizes: {
-        small: "1em",
-        medium: "1.05em",
-        large: "1.1em"
+        body: '#c5c5c5',
     }
 };
 

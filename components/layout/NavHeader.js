@@ -12,6 +12,7 @@ const FixedTop = styled.div`
 `;
 
 const NavContainer = styled(Container)`
+    font-weight: bold;
     color: ${props => props.theme.colors.primary};
     display: flex;
     flex-direction: column;
@@ -43,7 +44,6 @@ const Menu = styled.div`
 
 const Logo = styled.a`
     margin: 0;
-    font-weight: bold;
     font-size: 1.5em;
 `;
 

@@ -11,13 +11,13 @@ const FooterContainer = styled(Container)`
     align-items: center;
     border-top: 1px solid;
     padding: 15px 0;
-    margin-top: 30px;
+    margin-top: 2em;
     position: relative;
 `;
 
 const Reference = styled.a`
     display: flex;
-    margin: 10px 0;
+    margin: .3em 0;
     font-size: 1rem;
     span {
         margin-left: 5px;
@@ -27,7 +27,7 @@ const Reference = styled.a`
 const TmdbLogo = styled.a`
     bottom: 10px;
     right: 0px;
-    margin-top: 20px;
+    margin-top: .3em;
     @media (min-width: 600px) {
         position: absolute;
     }
@@ -61,8 +61,8 @@ const Footer = () => {
                     <Image 
                         src="/tmdb.svg" 
                         alt="Logo TMDB"
-                        width={80}
-                        height={80}
+                        width={60}
+                        height={60}
                     />
                 </TmdbLogo>
             </FooterContainer>
