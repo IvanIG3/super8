@@ -32,10 +32,17 @@ class MyDocument extends Document {
         return (
             <Html lang="es">
                 <Head>
-                    <link rel="preconnect" href="https://fonts.gstatic.com"/>
                     <link
-                        href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap"
-                        rel="stylesheet"
+                        rel="preload"
+                        href="/fonts/source-sans-pro-v14-latin-regular.woff2"
+                        as="font"
+                        crossOrigin=""
+                    />
+                    <link
+                        rel="preload"
+                        href="/fonts/source-sans-pro-v14-latin-700.woff2"
+                        as="font"
+                        crossOrigin=""
                     />
                 </Head>
                 <body>
