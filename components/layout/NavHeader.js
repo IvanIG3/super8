@@ -45,6 +45,12 @@ const Menu = styled.div`
 const Logo = styled.a`
     margin: 0;
     font-size: 1.5em;
+    @media (min-width: 576px) {
+        font-size: 2em;
+    }
+    @media (min-width: 768px) {
+        font-size: 2.5em;
+    }
 `;
 
 const Button = styled(ThMenu)`
