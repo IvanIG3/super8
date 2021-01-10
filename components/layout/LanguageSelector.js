@@ -13,7 +13,7 @@ const Select = styled.select`
     color: ${props => props.theme.colors.body};
     text-align: center;
     text-align-last: center;
-    height: 2em;
+    height: 2.8em;
     width: 3.5em;
     option {
         background-color: ${props => props.theme.colors.dark};
