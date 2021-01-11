@@ -1,3 +1,4 @@
+/* GLOBALS */
 *,
 *:before,
 *:after {
@@ -15,20 +16,23 @@ body {
     line-height: 1.5;
 }
 
+h1 {
+    border-bottom: 1px solid;
+    margin: .8em 0;
+    font-size: 1.6em;
+    text-align: center;
+}
+
 a {
     color: inherit;
     text-decoration: none;
 }
 
-h1 {
-    border-bottom: 1px solid;
-    margin: .8em 0;
-    font-size: 2em;
-    text-align: center;
-}
-
-a, svg, button, select {
-    transition: all .3s ease;
+a,
+svg,
+button,
+select {
+    transition: all .2s ease;
 }
 
 a:hover,
@@ -36,9 +40,16 @@ svg:hover,
 button:hover,
 select:hover {
     cursor: pointer;
-    filter: brightness(130%);
 }
 
+/* UTILITY */
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* RESPONSIVE */
 @media (min-width: 576px) {
     body {
         font-size: 1.1em;

@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import Container from '../../styles/Container';
 import LanguageSelector from './LanguageSelector';
 import Login from './Login';
 
-const Content = styled(Container)`
+const UserContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,10 +11,10 @@ const Content = styled(Container)`
 `; 
 
 const UserBar = () => (
-    <Content>
+    <UserContainer className="container">
         <LanguageSelector />
         <Login />
-    </Content>
+    </UserContainer>
 );
  
 export default React.memo(UserBar);

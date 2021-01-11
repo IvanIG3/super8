@@ -8,15 +8,23 @@ const Select = styled.select`
     appearance: none;
     -webkit-appearance: none;
     border-radius: .3em;
-    border: 1px solid ${props => props.theme.colors.body};
+    border: 1px solid ${props => props.theme.colors.textcolor};
+    padding: .5em .5em;
     background-color: transparent;
-    color: ${props => props.theme.colors.body};
+    color: ${props => props.theme.colors.textcolor};
     text-align: center;
     text-align-last: center;
-    height: 2.8em;
-    width: 3.5em;
+    font-size: .8em;
+
+    &:hover {
+        background-color: ${props => props.theme.colors.textcolor};
+        color: ${props => props.theme.colors.bgcolor};
+        font-weight: bold;
+    }
+
     option {
-        background-color: ${props => props.theme.colors.dark};
+        background-color: ${props => props.theme.colors.bgcolor};
+        color: ${props => props.theme.colors.textcolor};
     }
 `;
 

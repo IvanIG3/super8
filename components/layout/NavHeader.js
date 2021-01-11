@@ -3,7 +3,6 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { ThMenu } from '@styled-icons/typicons/ThMenu';
-import Container from '../../styles/Container';
 
 const FixedTop = styled.div`
     position: fixed;
@@ -11,7 +10,7 @@ const FixedTop = styled.div`
     width: 100%;
 `;
 
-const NavContainer = styled(Container)`
+const NavContainer = styled.div`
     font-weight: bold;
     color: ${props => props.theme.colors.primary};
     display: flex;
@@ -31,7 +30,7 @@ const Blurrer = styled.div`
     filter: blur(10px);
     -webkit-filter: blur(10px);
     z-index: -500;
-    background-color: ${props => props.theme.colors.dark};
+    background-color: ${props => props.theme.colors.bgcolor};
     background-size: cover;
 `;
 
@@ -81,6 +80,9 @@ const NavLink = styled.a`
     @media (min-width: 768px) {
         margin: 0 0 0 1.5em;
     }
+    &:hover {
+        border-bottom: 1px solid;
+    }
 `;
 
 const NavHeader = () => {
@@ -90,7 +92,7 @@ const NavHeader = () => {
         <div>
             <div style={{ height: "80px" }}></div>
             <FixedTop>
-                <NavContainer>
+                <NavContainer className="container">
                     <Blurrer></Blurrer>
                     <Menu>
                         <Link href="/">

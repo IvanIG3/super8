@@ -1,4 +1,4 @@
-import Button from '../../styles/Button';
+import Button from '../styled/Button';
 import { useTranslation } from 'react-i18next';
 import { Fingerprint } from '@styled-icons/fa-solid/Fingerprint';
 

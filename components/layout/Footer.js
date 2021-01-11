@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import { Github } from '@styled-icons/boxicons-logos/Github';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
-import Container from '../../styles/Container';
 
-const FooterContainer = styled(Container)`
+const FooterContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,7 +36,7 @@ const Footer = () => {
     const { t } = useTranslation();
     return (
         <footer>
-            <FooterContainer>
+            <FooterContainer className="container">
                 <Reference 
                     href="https://github.com/IvanIG3"
                     target="_blank"

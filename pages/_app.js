@@ -19,13 +19,13 @@ const MyApp = ({ Component, pageProps }) => (
         <Head>
             <title>Super8</title>
         </Head>
-        <Theme>
-            <Provider store={store}>
-                <AuthProvider>
+        <Provider store={store}>
+            <AuthProvider>
+                <Theme>
                     <Component {...pageProps} />
-                </AuthProvider>
-            </Provider>
-        </Theme>
+                </Theme>
+            </AuthProvider>
+        </Provider>
     </>
 );
 
