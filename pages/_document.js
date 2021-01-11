@@ -33,16 +33,16 @@ class MyDocument extends Document {
             <Html lang="es">
                 <Head>
                     <link
-                        rel="preload"
-                        href="/fonts/source-sans-pro-v14-latin-regular.woff2"
                         as="font"
-                        crossOrigin=""
+                        rel="preload prefetch"
+                        href="/fonts/source-sans-pro-v14-latin-regular.woff2"
+                        crossOrigin="anonymous"
                     />
                     <link
-                        rel="preload"
-                        href="/fonts/source-sans-pro-v14-latin-700.woff2"
                         as="font"
-                        crossOrigin=""
+                        rel="preload prefetch"
+                        href="/fonts/source-sans-pro-v14-latin-700.woff2"
+                        crossOrigin="anonymous"
                     />
                 </Head>
                 <body>
