@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
 
 import useAuth from '../firebase/auth/useAuth';
 import Layout from '../components/layout/Layout';
@@ -36,9 +37,13 @@ const Login = () => {
     const { loginWithEmail } = useAuth();
     const router = useRouter();
 
-    const handleSubmit = ({ email, password }) => {
-        loginWithEmail(email, password);
-        router.push('/');
+    const handleSubmit = async ({ email, password }) => {
+        const error = await loginWithEmail(email, password);
+        if (error) {
+            toast.error(t(error));
+        } else {
+            router.push('/');
+        }
     };
 
     // Form validations
@@ -58,7 +63,7 @@ const Login = () => {
     });
 
     return (
-        <Layout>
+        <Layout description="Login page for user authentication">
             <h1>{t('Login')}</h1>
             <FormContainer>
                 <Form onSubmit={formik.handleSubmit}>
@@ -72,8 +77,8 @@ const Login = () => {
                         onBlur={formik.handleBlur}
                     />
                     <Label style={{ color: "red" }}>
-                        {formik.touched.email && formik.errors.email ? 
-                            formik.errors.email : <br/> }
+                        {formik.touched.email && formik.errors.email ?
+                            formik.errors.email : <br />}
                     </Label>
                     <Label htmlFor="password">{t("Password")}</Label>
                     <Input
@@ -85,8 +90,8 @@ const Login = () => {
                         onBlur={formik.handleBlur}
                     />
                     <Label style={{ color: "red" }}>
-                        {formik.touched.password && formik.errors.password ? 
-                            formik.errors.password : <br/> }
+                        {formik.touched.password && formik.errors.password ?
+                            formik.errors.password : <br />}
                     </Label>
                     <Button type='submit' style={{ width: '100%', marginTop: '20px' }}>
                         {t('Login')}
