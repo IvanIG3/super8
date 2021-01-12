@@ -10,7 +10,7 @@ const Select = styled.select`
     border-radius: .3em;
     border: 1px solid ${props => props.theme.colors.textcolor};
     padding: .5em .5em;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, .2);
     color: ${props => props.theme.colors.textcolor};
     text-align: center;
     text-align-last: center;
