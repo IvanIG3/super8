@@ -3,6 +3,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { ThMenu } from '@styled-icons/typicons/ThMenu';
+import NavLink from './NavLink';
 
 const FixedTop = styled.div`
     position: fixed;
@@ -73,18 +74,6 @@ const Nav = styled.nav`
     }
 `;
 
-const NavLink = styled.a`
-    font-size: 1.1em;
-    text-align: center;
-    margin: .5em 0;
-    @media (min-width: 768px) {
-        margin: 0 0 0 1.5em;
-    }
-    &:hover {
-        border-bottom: 1px solid;
-    }
-`;
-
 const NavHeader = () => {
     const [opened, setOpened] = useState(false);
     const { t } = useTranslation();
@@ -101,21 +90,11 @@ const NavHeader = () => {
                         <Button onClick={() => setOpened(!opened)} />
                     </Menu>
                     <Nav opened={opened}>
-                        <Link href="/movies">
-                            <NavLink>{t('Movies')}</NavLink>
-                        </Link>
-                        <Link href="/tvshows">
-                            <NavLink>{t('TV Shows')}</NavLink>
-                        </Link>
-                        <Link href="/mylist">
-                            <NavLink>{t('My List')}</NavLink>
-                        </Link>
-                        <Link href="/seen">
-                            <NavLink>{t('Seen')}</NavLink>
-                        </Link>
-                        <Link href="/favorites">
-                            <NavLink>{t('Favorites')}</NavLink>
-                        </Link>
+                        <NavLink href="/movies">{t('Movies')}</NavLink>
+                        <NavLink href="/tvshows">{t('TV Shows')}</NavLink>
+                        <NavLink href="/mylist">{t('My List')}</NavLink>
+                        <NavLink href="/seen">{t('Seen')}</NavLink>
+                        <NavLink href="/favorites">{t('Favorites')}</NavLink>
                     </Nav>
                 </NavContainer>
             </FixedTop>
