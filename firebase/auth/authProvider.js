@@ -1,12 +1,8 @@
 import { useState, useEffect } from 'react';
 import authContext from './authContext';
 import firebase from '../firebase';
-import { useTranslation } from 'react-i18next';
-import { toast } from 'react-toastify';
 
 const authProvider = ({ children }) => {
-
-    const { t } = useTranslation();
 
     // User state
     const [user, setUser] = useState(null);
@@ -24,19 +20,31 @@ const authProvider = ({ children }) => {
             const response = await firebase.auth().signInWithEmailAndPassword(email, password);
             setUser(response.user);
         } catch (error) {
-            toast.error(t(error.code), { className: 'bg-danger' });
+            return error.code;
         }
     };
 
     // Logout
     const logout = () => firebase.auth().signOut().then(() => setUser(false));
 
+    // Create user
+    const createUser = async (name, email, password) => {
+        try {
+            const userInstance = await firebase.auth().createUserWithEmailAndPassword(email, password);
+            await userInstance.user.updateProfile({ displayName: name });
+            setUser(userInstance.user);
+        } catch (error) {
+            return error.code;
+        }
+    };
+
     return (
         <authContext.Provider
             value={{
                 user,
                 loginWithEmail,
-                logout
+                logout,
+                createUser
             }}
         >
             {children}

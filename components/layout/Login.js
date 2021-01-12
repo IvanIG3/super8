@@ -17,7 +17,8 @@ const Login = () => {
 
     return (
         <div style={{ display: 'flex' }}>
-            {user && <UserIcon>{user.displayName.charAt(0).toUpperCase()}</UserIcon>}
+            {user && user.displayName &&
+                <UserIcon>{user.displayName.charAt(0).toUpperCase()}</UserIcon>}
             <Button onClick={handleClick}>
                 <Fingerprint style={{ width: '1em', marginRight: '5px' }} />
                 {user ? t('Logout') : t('Login')}
