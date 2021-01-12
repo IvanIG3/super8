@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import dynamic from 'next/dynamic';
 import styled from 'styled-components';
+import { ToastContainer } from 'react-toastify';
 
 import NavHeader from './NavHeader';
 import UserBar from './UserBar';
@@ -27,29 +27,23 @@ const Main = styled.main`
     padding-top: 1em;
 `;
 
-const Layout = ({ children, description }) => {
-
-    const DynamicToastContainer = dynamic(() =>
-        import('react-toastify').then(imp => imp.ToastContainer));
-
-    return (
-        <>
-            <Head>
-                <meta name="description" content={description} key="description" />
-            </Head>
-            <DynamicToastContainer />
-            <ContainerLayout>
-                <BurgerContent>
-                    <NavHeader />
-                    <UserBar />
-                    <Main className="container">
-                        {children}
-                    </Main>
-                    <Footer />
-                </BurgerContent>
-            </ContainerLayout>
-        </>
-    );
-};
+const Layout = ({ children, description }) => (
+    <>
+        <Head>
+            <meta name="description" content={description} key="description" />
+        </Head>
+        <ToastContainer />
+        <ContainerLayout>
+            <BurgerContent>
+                <NavHeader />
+                <UserBar />
+                <Main className="container">
+                    {children}
+                </Main>
+                <Footer />
+            </BurgerContent>
+        </ContainerLayout>
+    </>
+);
 
 export default Layout;
