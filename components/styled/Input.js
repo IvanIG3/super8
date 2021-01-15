@@ -11,6 +11,7 @@ export default styled.input`
     border: 2px solid ${props => props.theme.colors.textcolor};
     background-color: ${props => props.theme.colors.textcolor};
     color: ${props => props.theme.colors.bgcolor};
+    min-width: 0px;
 
     &:focus{
         outline: none;
