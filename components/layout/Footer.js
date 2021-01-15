@@ -56,6 +56,7 @@ const Footer = () => {
                     href="https://www.themoviedb.org/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="The Movie Database API"
                 >
                     <Image 
                         src="/tmdb.svg" 
