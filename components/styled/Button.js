@@ -11,6 +11,10 @@ const notselected = css`
 `;
 
 export default styled.button`
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: .5em;
     border: 1px solid ${props => props.theme.colors.primary};
     border-radius: .3em;
     padding: .7em 1em;

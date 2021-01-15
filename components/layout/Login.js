@@ -20,7 +20,7 @@ const Login = () => {
             {user && user.displayName &&
                 <UserIcon>{user.displayName.charAt(0).toUpperCase()}</UserIcon>}
             <Button onClick={handleClick}>
-                <Fingerprint style={{ width: '1em', marginRight: '5px' }} />
+                <Fingerprint style={{ width: '1em' }} />
                 {user ? t('Logout') : t('Login')}
             </Button>
         </div>
