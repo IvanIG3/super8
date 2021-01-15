@@ -4,7 +4,7 @@ export default styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 255, 255, .1);
+    background-color: rgba(0, 0, 0, .2);
     font-weight: bold;
     margin: 0 10px;
     padding: 0 1em;
