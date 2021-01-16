@@ -1,9 +1,5 @@
 import axios from 'axios';
 
-const tmdb = axios.create({
-    baseURL: process.env.tmdbURL
-});
-
 export default async function handler(req, res) {
     // Get data from request
     const data = req.body;
@@ -12,10 +8,10 @@ export default async function handler(req, res) {
     params['api_key'] = process.env.TMDB_API_KEY;
     // Create api url call
     const urlparams = new URLSearchParams(params).toString();
-    const call = `${endpoint}?${urlparams}`;
+    const call = `${process.env.tmdbURL}${endpoint}?${urlparams}`;
     // Do api call and return the result data
     try {
-        const movies = await tmdb.get(call);
+        const movies = await axios.get(call);
         res.status(200).json(movies.data);
     } catch (error) {
         res.status(500).json({ 
