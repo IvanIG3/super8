@@ -24,6 +24,10 @@ export default styled.button`
     ${props => props.selected ? selected : notselected}
 
     &:hover {
-        ${props => props.selected ? notselected : selected}
+        ${props => !props.selected && selected}
+    }
+
+    &:focus {
+        outline: none;
     }
 `;
