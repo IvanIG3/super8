@@ -4,8 +4,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Skeleton from './Skeleton';
 
-const CardImage = styled.div`
+const Card = styled.div`
+    overflow: hidden;
     position: relative;
+`;
+
+const CardImage = styled.div`
     width: 100%;
     max-height: ${props => props.height && `${props.height}px`};
     max-width: ${props => props.width && `${props.width}px`};
@@ -25,7 +29,7 @@ const Image = styled(ImageNext)`
 `;
 
 const ImageCard = ({ children, src, width, height }) => (
-    <div>
+    <Card>
         <CardImage width={width} height={height}>
             {src ?
                 <Image
@@ -42,7 +46,7 @@ const ImageCard = ({ children, src, width, height }) => (
         <CardBody>
             {children}
         </CardBody>
-    </div>
+    </Card>
 );
 
 ImageCard.propTypes = {
@@ -52,4 +56,4 @@ ImageCard.propTypes = {
     height: PropTypes.number.isRequired,
 };
 
-export default ImageCard;
+export default React.memo(ImageCard);

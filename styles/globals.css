@@ -30,14 +30,12 @@ a {
 }
 
 a,
-svg,
 button,
 select {
     transition: all .2s ease;
 }
 
 a:hover,
-svg:hover,
 button:hover,
 select:hover {
     cursor: pointer;
