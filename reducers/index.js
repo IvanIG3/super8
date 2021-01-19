@@ -6,6 +6,6 @@ import collectionReducer from './collectionReducer';
 export default combineReducers({
     language: languageReducer,
     movies: createListReducer('movies'),
-    tvShows: createListReducer('tvShows'),
+    tvshows: createListReducer('tvshows'),
     firestoreCollections: collectionReducer,
 });
