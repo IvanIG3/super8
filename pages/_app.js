@@ -8,11 +8,12 @@ import '../styles/globals.css';
 import Theme from '../styles/Theme';
 
 // Translations
-import '../translations';
+import '../language';
 
-// State
+// Providers
 import store from '../store';
 import AuthProvider from '../firebase/auth/authProvider';
+import LanguageProvider from '../language/languageProvider';
 
 const MyApp = ({ Component, pageProps }) => (
     <>
@@ -21,9 +22,11 @@ const MyApp = ({ Component, pageProps }) => (
         </Head>
         <Provider store={store}>
             <AuthProvider>
-                <Theme>
-                    <Component {...pageProps} />
-                </Theme>
+                <LanguageProvider>
+                    <Theme>
+                        <Component {...pageProps} />
+                    </Theme>
+                </LanguageProvider>
             </AuthProvider>
         </Provider>
     </>

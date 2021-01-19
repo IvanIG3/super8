@@ -10,17 +10,18 @@ import MoviePaginator from '../components/movies/list/MoviePaginator';
 import actions from '../actions/listActions';
 import apiTmdb from '../api/tmdb';
 import useUpdate from '../hooks/useUpdate';
+import useLanguage from '../language/useLanguage';
 
 const MoviesPage = () => {
     // Hooks
     const { t } = useTranslation();
     const dispatch = useDispatch();
+    const { language } = useLanguage();
 
     // Redux
     let sortBy = useSelector(state => state.movies.sortBy);
     const page = useSelector(state => state.movies.page);
     const query = useSelector(state => state.movies.query);
-    const language = useSelector(state => state.language.language);
 
     // Functions
     const { searchList, sortList, setSortBy } = actions('movies');

@@ -10,17 +10,18 @@ import TvshowPaginator from '../components/tvshows/list/TvshowPaginator';
 import actions from '../actions/listActions';
 import apiTmdb from '../api/tmdb';
 import useUpdate from '../hooks/useUpdate';
+import useLanguage from '../language/useLanguage';
 
 const TvshowsPage = () => {
     // Hooks
     const { t } = useTranslation();
     const dispatch = useDispatch();
+    const { language } = useLanguage();
 
     // Redux
     let sortBy = useSelector(state => state.tvshows.sortBy);
     const page = useSelector(state => state.tvshows.page);
     const query = useSelector(state => state.tvshows.query);
-    const language = useSelector(state => state.language.language);
 
     // Functions
     const { searchList, sortList, setSortBy } = actions('tvshows');

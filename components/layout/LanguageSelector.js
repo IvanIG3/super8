@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
-import { setLanguage } from '../../actions/languageActions';
+import useLanguage from '../../language/useLanguage';
 
 const Select = styled.select`
     appearance: none;
@@ -29,17 +28,14 @@ const Select = styled.select`
 `;
 
 const LanguageSelector = () => {
-    // Translations
+    // Hooks
     const { i18n } = useTranslation();
-
-    // Redux
-    const dispatch = useDispatch();
-    const language = useSelector(state => state.language.language);
+    const { language, setLanguage } = useLanguage();
 
     // Change language
     const handleChange = e => {
         i18n.changeLanguage(e.target.value);
-        dispatch(setLanguage(e.target.value));
+        setLanguage(e.target.value);
     };
 
     return (
