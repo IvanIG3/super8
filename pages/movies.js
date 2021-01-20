@@ -55,7 +55,10 @@ const MoviesPage = () => {
     useUpdate(() => getMovies(), [language, query, sortBy, page]);
 
     // Back to top
-    useUpdate(() => setTimeout(() => window.scrollTo(0, 0), 500), [page]);
+    useUpdate(() => 
+        setTimeout(() => window.scrollTo({top: 0, behavior: 'smooth'}), 500), 
+        [page]
+    );
 
     return (
         <Layout description="List of popular and new movies">
