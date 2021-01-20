@@ -7,7 +7,7 @@ import { StarFill } from '@styled-icons/bootstrap/StarFill';
 import { CalendarExclamation } from '@styled-icons/boxicons-regular/CalendarExclamation';
 
 import Button from '../../styled/Button';
-import ButtonsGroup from '../../styled/ButtonsGroup';
+import ButtonsGroup from '../../ui/ButtonsGroup';
 import actions from '../../../actions/listActions';
 
 const TvshowSortButtons = () => {
@@ -19,34 +19,24 @@ const TvshowSortButtons = () => {
     const sortBy = useSelector(state => state.tvshows.sortBy);
     const { setSortBy } = actions('tvshows');
 
+    const handleOnClick = value => dispatch(setSortBy(value));
+
     return (
-        <ButtonsGroup>
-            <Button
-                type="button"
-                selected={sortBy === 'popular'}
-                onClick={() => dispatch(setSortBy('popular'))}
-                aria-label={t('popular')}
-            >
+        <ButtonsGroup
+            value={sortBy}
+            onClick={handleOnClick}
+        >
+            <Button value='popular'>
                 <TrendingUp style={{ width: "1.5em" }} />
-                <span>{t('popular')}</span>
+                <span className='hide'>{t('popular')}</span>
             </Button>
-            <Button
-                type="button"
-                selected={sortBy === 'top_rated'}
-                onClick={() => dispatch(setSortBy('top_rated'))}
-                aria-label={t('top_rated')}
-            >
+            <Button value='top_rated'>
                 <StarFill style={{ width: "1.5em" }} />
-                <span>{t('top_rated')}</span>
+                <span className='hide'>{t('top_rated')}</span>
             </Button>
-            <Button
-                type="button"
-                selected={sortBy === 'on_the_air'}
-                onClick={() => dispatch(setSortBy('on_the_air'))}
-                aria-label={t('on_the_air')}
-            >
+            <Button value='on_the_air'>
                 <CalendarExclamation style={{ width: "1.5em" }} />
-                <span>{t('on_the_air')}</span>
+                <span className='hide'>{t('on_the_air')}</span>
             </Button>
         </ButtonsGroup>
     );
