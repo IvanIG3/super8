@@ -7,7 +7,7 @@ const Select = styled.select`
     appearance: none;
     -webkit-appearance: none;
     border-radius: .3em;
-    border: 1px solid ${props => props.theme.colors.textcolor};
+    border: 1px solid ${props => `${props.theme.colors.textcolor}80`};
     padding: .5em .5em;
     background-color: rgba(0, 0, 0, .2);
     color: ${props => props.theme.colors.textcolor};
@@ -18,7 +18,6 @@ const Select = styled.select`
     &:hover {
         background-color: ${props => props.theme.colors.textcolor};
         color: ${props => props.theme.colors.bgcolor};
-        font-weight: bold;
     }
 
     option {

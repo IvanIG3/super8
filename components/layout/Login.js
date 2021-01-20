@@ -2,9 +2,26 @@ import Button from '../styled/Button';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 import { Fingerprint } from '@styled-icons/fa-solid/Fingerprint';
-
+import styled from 'styled-components';
 import useAuth from '../../firebase/auth/useAuth';
-import UserIcon from '../styled/UserIcon';
+
+const UserIcon = styled.div`
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .2);
+    font-weight: bold;
+    margin: 0 10px;
+    padding: 0 .8em;
+    border-radius: 3em;
+    border: 1px solid ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.primary};
+
+    &:hover {
+        cursor: pointer;
+        background-color: ${props => props.theme.colors.primary};
+        color: ${props => props.theme.colors.bgcolor};
+    }
+`;
 
 const Login = () => {
     // Hooks
