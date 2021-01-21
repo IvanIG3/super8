@@ -9,6 +9,7 @@ import Tabs from '../../components/ui/Tabs';
 import Tab from '../../components/ui/Tab';
 import { clearState } from '../../actions/movieActions';
 import useUpdate from '../../hooks/useUpdate';
+import { movieSelector } from '../../selectors/movieSelectors';
 
 // Dynamic imports
 const DynamicMovieDetails = dynamic(
@@ -33,7 +34,7 @@ const MoviePage = ({ id }) => {
     // Hooks
     const dispatch = useDispatch();
     const { t } = useTranslation();
-    const movie = useSelector(state => state.movie.movie);
+    const movie = useSelector(movieSelector);
 
     // State
     const [tab, setTab] = useState(0);
