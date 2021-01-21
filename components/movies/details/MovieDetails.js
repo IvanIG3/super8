@@ -5,13 +5,14 @@ import { useTranslation } from 'react-i18next';
 
 import ImageCard from '../../ui/ImageCard';
 import Skeleton from '../../ui/Skeleton';
+import CollectionButtonsGroup from '../../collections/CollectionButtonsGroup';
 import { movieSelector } from '../../../selectors/movieSelectors';
 import { getMovie } from '../../../actions/movieActions';
 import useLanguage from '../../../language/useLanguage';
 
 const DetailsContainer = styled.div`
     display: grid;
-    column-gap: 1em;
+    gap: 1em;
     grid-auto-flow: row;
     @media (min-width: 500px) {
         grid-template-columns: 1fr 1fr;
@@ -48,7 +49,7 @@ const MovieDetails = ({ id }) => {
                 height={750}
                 width={500}
             >
-                <p>Test</p>
+                <CollectionButtonsGroup item={movie} />
             </ImageCard>
             <div>
                 <Info>
