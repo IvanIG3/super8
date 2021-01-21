@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 export const tvShowSelector = createSelector(
     state => state.tvshow.tvshow,
-    tvshow => tvshow ? ({
+    tvshow => tvshow && ({
         id: tvshow.id,
         title: tvshow.name,
         poster_path: tvshow.poster_path ? 
@@ -18,7 +18,7 @@ export const tvShowSelector = createSelector(
         backdrop_path: tvshow.backdrop_path ? 
             `${process.env.tmdbBackdropURL}${tvshow.backdrop_path}` : '/no-backdrop.png',
         vote_average: tvshow.vote_average,
-    }) : {}
+    })
 );
 
 export const tvshowListSelector = createSelector(
@@ -50,7 +50,7 @@ export const recommendationsSelector = createSelector(
         title: tvshow.name,
         poster_path: tvshow.poster_path ? 
             `${process.env.tmdbImageURL}${tvshow.poster_path}` : '/no-poster.png',
-        vote_average: tvshow.vote_average || 0,
+        score: tvshow.vote_average,
         url: `/tvshows/${tvshow.id}`,
     }))
 );

@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 export const movieSelector = createSelector(
     state => state.movie.movie,
-    movie => movie ? ({
+    movie => movie && ({
         id: movie.id,
         title: movie.title,
         poster_path: movie.poster_path ? 
@@ -19,7 +19,7 @@ export const movieSelector = createSelector(
         backdrop_path: movie.backdrop_path ? 
             `${process.env.tmdbBackdropURL}${movie.backdrop_path}` : '/no-backdrop.png',
         vote_average: movie.vote_average,
-    }) : {}
+    })
 );
 
 export const movieListSelector = createSelector(
@@ -51,7 +51,7 @@ export const recommendationsSelector = createSelector(
         title: movie.title,
         poster_path: movie.poster_path ? 
             `${process.env.tmdbImageURL}${movie.poster_path}` : '/no-poster.png',
-        vote_average: movie.vote_average || 0,
+        score: movie.vote_average,
         url: `/movies/${movie.id}`,
     }))
 );
