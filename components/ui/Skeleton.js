@@ -3,23 +3,21 @@ import PropTypes from 'prop-types';
 
 const Container = styled.div`
     background-color: rgba(0, 0, 0, .2);
-    padding-bottom: ${props => props.width &&
-        `${(props.height / props.width * 100)}%`};
+    padding-bottom: ${props => props.scale && `${(props.scale * 100)}%`};
     border-radius: .3em;
     font-size: 1em;
-    max-height: ${props => props.height && `${props.height}px`};
-    max-width: ${props => props.width && `${props.width}px`};
-    width: ${props => !props.width && '100%'};
+    height: ${props => props.height && props.height};
+    width: ${props => props.width ? props.width : '100%'};
     margin-top: .5em;
     &:first-of-type {
         margin-top: 0;
     }
 `;
 
-const Skeleton = ({ height, width, count }) => (
+const Skeleton = ({ scale, height, width, count }) => (
     <>
         {[...Array(count)].map((_, index) =>
-            <Container key={index} width={width} height={height}>
+            <Container key={index} width={width} height={height} scale={scale}>
                 {!height && <br />}
             </Container>
         )}
@@ -27,9 +25,10 @@ const Skeleton = ({ height, width, count }) => (
 );
 
 Skeleton.propTypes = {
-    height: PropTypes.number,
-    width: PropTypes.number,
+    height: PropTypes.string,
+    width: PropTypes.string,
     count: PropTypes.number,
+    scale: PropTypes.number,
 };
 
 export default Skeleton;

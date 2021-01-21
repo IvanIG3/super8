@@ -40,7 +40,7 @@ const ImageCard = ({ children, src, width, height }) => (
                     height={height}
                 />
                 :
-                <Skeleton width={width} height={height} />
+                <Skeleton scale={height/width} />
             }
         </CardImage>
         <CardBody>
