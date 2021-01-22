@@ -10,6 +10,7 @@ import Skeleton from '../../ui/Skeleton';
 import { getMovieCast } from '../../../actions/movieActions';
 import { castSelector } from '../../../selectors/movieSelectors';
 import useLanguage from '../../../language/useLanguage';
+import useUpdate from '../../../hooks/useUpdate';
 
 const SecondaryText = styled.span`
     display: block;
@@ -24,7 +25,8 @@ const MovieCast = ({ id }) => {
     const language = useLanguage();
 
     // Fetch movie cast
-    useEffect(() => !cast && dispatch(getMovieCast(id, language)), [language]);
+    useEffect(() => !cast && dispatch(getMovieCast(id, language)), []);
+    useUpdate(() => dispatch(getMovieCast(id, language)), [language]);
 
     return (
         <GridList xs={2} sm={3} md={4} lg={5}>

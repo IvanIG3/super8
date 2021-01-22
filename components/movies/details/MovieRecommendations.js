@@ -10,6 +10,7 @@ import ScoreTag from '../../ui/ScoreTag';
 import useLanguage from '../../../language/useLanguage';
 import { getMovieRecommendations } from '../../../actions/movieActions';
 import { recommendationsSelector } from '../../../selectors/movieSelectors';
+import useUpdate from '../../../hooks/useUpdate';
 
 const MovieRecommendations = ({ id }) => {
     // Hooks
@@ -18,7 +19,8 @@ const MovieRecommendations = ({ id }) => {
     const { language } = useLanguage();
 
     // Get recommendations
-    useEffect(() => !movies && dispatch(getMovieRecommendations(id, language)), [language]);
+    useEffect(() => !movies && dispatch(getMovieRecommendations(id, language)), []);
+    useUpdate(() => dispatch(getMovieRecommendations(id, language)), [language]);
 
     return (
         <GridList xs={2} sm={3} md={4} lg={5}>

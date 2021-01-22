@@ -10,6 +10,7 @@ import ScoreTag from '../../ui/ScoreTag';
 import useLanguage from '../../../language/useLanguage';
 import { getTvshowRecommendations } from '../../../actions/tvshowActions';
 import { recommendationsSelector } from '../../../selectors/tvshowSelectors';
+import useUpdate from '../../../hooks/useUpdate';
 
 const TvshowRecommendations = ({ id }) => {
     // Hooks
@@ -18,7 +19,8 @@ const TvshowRecommendations = ({ id }) => {
     const { language } = useLanguage();
 
     // Get recommendations
-    useEffect(() => !tvs && dispatch(getTvshowRecommendations(id, language)), [language]);
+    useEffect(() => !tvs && dispatch(getTvshowRecommendations(id, language)), []);
+    useUpdate(() => dispatch(getTvshowRecommendations(id, language)), [language]);
 
     return (
         <GridList xs={2} sm={3} md={4} lg={5}>

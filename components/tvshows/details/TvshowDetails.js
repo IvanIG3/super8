@@ -10,6 +10,7 @@ import CollectionButtonsGroup from '../../collections/CollectionButtonsGroup';
 import { tvShowSelector } from '../../../selectors/tvshowSelectors';
 import { getTvshow } from '../../../actions/tvshowActions';
 import useLanguage from '../../../language/useLanguage';
+import useUpdate from '../../../hooks/useUpdate';
 
 const DetailsContainer = styled.div`
     display: grid;
@@ -41,7 +42,8 @@ const TvshowDetails = ({ id }) => {
     const { language } = useLanguage();
 
     // Fetch tv show details
-    useEffect(() => !tvshow && dispatch(getTvshow(id, language)), [language]);
+    useEffect(() => !tvshow && dispatch(getTvshow(id, language)), []);
+    useUpdate(() => dispatch(getTvshow(id, language)), [language]);
 
     return (
         <DetailsContainer>

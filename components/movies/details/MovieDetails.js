@@ -10,6 +10,7 @@ import CollectionButtonsGroup from '../../collections/CollectionButtonsGroup';
 import { movieSelector } from '../../../selectors/movieSelectors';
 import { getMovie } from '../../../actions/movieActions';
 import useLanguage from '../../../language/useLanguage';
+import useUpdate from '../../../hooks/useUpdate';
 
 const DetailsContainer = styled.div`
     display: grid;
@@ -41,7 +42,8 @@ const MovieDetails = ({ id }) => {
     const { language } = useLanguage();
 
     // Fetch movie details
-    useEffect(() => !movie && dispatch(getMovie(id, language)), [language]);
+    useEffect(() => !movie && dispatch(getMovie(id, language)), []);
+    useUpdate(() => dispatch(getMovie(id, language)), [language]);
 
     return (
         <DetailsContainer>
