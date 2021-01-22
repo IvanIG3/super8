@@ -1,5 +1,6 @@
 import { cloneElement, Children } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const TabsContainer = styled.div`
     display: grid;
@@ -26,5 +27,11 @@ const Tabs = ({ children, idxTab, setIdxTab }) => (
         </div>
     </div>
 );
+
+Tabs.propTypes = {
+    children: PropTypes.node.isRequired,
+    idxTab: PropTypes.number.isRequired,
+    setIdxTab: PropTypes.func.isRequired,
+};
 
 export default Tabs;

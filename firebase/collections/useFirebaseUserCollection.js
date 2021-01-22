@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 
 import useUpdate from '../../hooks/useUpdate';
 import useAuth from '../auth/useAuth';
@@ -69,6 +70,10 @@ const useFirebaseUserCollection = (collection) => {
         addItemToCollection,
         removeItemToCollection
     ];
+};
+
+useFirebaseUserCollection.propTypes = {
+    collection: PropTypes.string.isRequired
 };
 
 export default useFirebaseUserCollection;

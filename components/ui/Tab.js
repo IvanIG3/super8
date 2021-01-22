@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
 
 const ContainerTab = styled.div`
     padding: .3em 1em;
@@ -39,5 +40,11 @@ const Tab = ({ isActive, setActive, label }) => (
         <span>{label}</span>
     </ContainerTab>
 );
+
+Tab.propTypes = {
+    isActive: PropTypes.bool,
+    setActive: PropTypes.func,
+    label: PropTypes.string
+};
 
 export default Tab;

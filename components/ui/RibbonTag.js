@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Container = styled.div`
     position: absolute;
@@ -28,6 +29,11 @@ const RibbonTag = ({ icon, backgroundColor }) => {
             </TagContainer>
         </Container>
     );
+};
+
+RibbonTag.propTypes = {
+    icon: PropTypes.elementType.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
 };
 
 export default RibbonTag;

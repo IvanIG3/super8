@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 
 import ImageCard from '../../ui/ImageCard';
 import Skeleton from '../../ui/Skeleton';
@@ -78,6 +79,10 @@ const TvshowDetails = ({ id }) => {
             </div>
         </DetailsContainer>
     );
-}
+};
+
+TvshowDetails.propTypes = {
+    id: PropTypes.string.isRequired
+};
 
 export default TvshowDetails;

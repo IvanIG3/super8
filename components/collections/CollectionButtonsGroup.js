@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import Skeleton from '../ui/Skeleton';
 import CollectionButton from './CollectionButton';
@@ -65,6 +66,10 @@ const CollectionButtonsGroup = ({ item }) => {
             }
         </Container>
     );
+};
+
+CollectionButtonsGroup.propTypes = {
+    item: PropTypes.object
 };
 
 export default CollectionButtonsGroup;

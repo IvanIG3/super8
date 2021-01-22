@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 
 const StyledLink = styled.a`
     font-size: 1.1em;
@@ -29,6 +30,11 @@ const NavLink = ({ children, href }) => {
             </StyledLink>
         </Link>
     );
+};
+
+NavLink.propTypes = {
+    children: PropTypes.node,
+    href: PropTypes.string.isRequired
 };
 
 export default NavLink;

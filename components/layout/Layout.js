@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import styled from 'styled-components';
 import { ToastContainer } from 'react-toastify';
+import PropTypes from 'prop-types';
 
 import NavHeader from './NavHeader';
 import UserBar from './UserBar';
@@ -45,5 +46,10 @@ const Layout = ({ children, description }) => (
         </ContainerLayout>
     </>
 );
+
+Layout.propTypes = {
+    childre: PropTypes.node,
+    description: PropTypes.string.isRequired
+};
 
 export default Layout;

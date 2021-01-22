@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import GridList from '../../styled/GridList';
 import ImageCard from '../../ui/ImageCard';
@@ -37,6 +38,10 @@ const TvshowRecommendations = ({ id }) => {
             )}
         </GridList>
     );
-}
+};
+
+TvshowRecommendations.propTypes = {
+    id: PropTypes.string.isRequired
+};
 
 export default TvshowRecommendations;
