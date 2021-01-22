@@ -1,4 +1,4 @@
-import { Children, cloneElement } from 'react';
+import React, { Children, cloneElement } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -43,4 +43,4 @@ ButtonsGroup.propTypes = {
     onClick: PropTypes.func,
 };
 
-export default ButtonsGroup;
+export default React.memo(ButtonsGroup);
