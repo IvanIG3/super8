@@ -24,16 +24,14 @@ const useFirebaseUserCollection = (collection) => {
 
     const getCollectionRef = async () => {
         await import('firebase/firestore');
-        const userRef = await firebase.firestore().collection('users').doc(user.uid);
-        const collectionRef = await userRef.collection(collection);
-        return collectionRef;
+        const userRef = firebase.firestore().collection('users').doc(user.uid);
+        return userRef.collection(collection);
     };
 
     const saveCollection = async () => {
         const collectionRef = await getCollectionRef();
-        for (let i = 0; collectionState && i < collectionState.length; i += PER_CHUNK) {
-            const docRef = await collectionRef.doc(i.toString());
-            await docRef.set({
+        for (let i = 0; i <= collectionState.length; i += PER_CHUNK) {
+            await collectionRef.doc(i.toString()).set({
                 json: JSON.stringify(collectionState.slice(i, i + PER_CHUNK))
             });
         }
@@ -59,7 +57,7 @@ const useFirebaseUserCollection = (collection) => {
     }, [user]);
 
     // Save changes made into the collection
-    useUpdate(() => collectionState && saveCollection(), [collectionState]);
+    useUpdate(() => saveCollection(), [collectionState]);
 
     // Collection functions
     const addItemToCollection = async (item) => dispatch(addItem(collection, item));
