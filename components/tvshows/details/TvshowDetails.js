@@ -40,7 +40,7 @@ const TvshowDetails = ({ id }) => {
     const { language } = useLanguage();
 
     // Fetch tv show details
-    useEffect(() => !tvshow && dispatch(getTvshow(id, language)), [id, language]);
+    useEffect(() => !tvshow && dispatch(getTvshow(id, language)), [language]);
 
     return (
         <DetailsContainer>

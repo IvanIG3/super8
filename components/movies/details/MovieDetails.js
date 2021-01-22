@@ -40,7 +40,7 @@ const MovieDetails = ({ id }) => {
     const { language } = useLanguage();
 
     // Fetch movie details
-    useEffect(() => !movie && dispatch(getMovie(id, language)), [id, language]);
+    useEffect(() => !movie && dispatch(getMovie(id, language)), [language]);
 
     return (
         <DetailsContainer>

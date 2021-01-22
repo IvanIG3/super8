@@ -41,6 +41,7 @@ const MoviePage = ({ id }) => {
 
     // Back to tab 0 when moving to another movie
     useUpdate(() => {
+        dispatch(clearState());
         setTab(0);
         window.scrollTo({top: 0});
     }, [id]);

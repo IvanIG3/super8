@@ -23,7 +23,7 @@ const TvshowCast = ({ id }) => {
     const language = useLanguage();
 
     // Fetch tv cast
-    useEffect(() => !cast && dispatch(getTvshowCast(id, language)), [id, language]);
+    useEffect(() => !cast && dispatch(getTvshowCast(id, language)), [language]);
 
     return (
         <GridList xs={2} sm={3} md={4} lg={5}>

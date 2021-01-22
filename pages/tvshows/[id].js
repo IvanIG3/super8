@@ -41,6 +41,7 @@ const TvshowPage = ({ id }) => {
 
     // Back to tab 0 when moving to another tv show
     useUpdate(() => {
+        dispatch(clearState());
         setTab(0);
         window.scrollTo({top: 0});
     }, [id]);
