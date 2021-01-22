@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Fingerprint } from '@styled-icons/fa-solid/Fingerprint';
 import styled from 'styled-components';
 import useAuth from '../../firebase/auth/useAuth';
+import SpinnerDots from '../../components/ui/SpinnerDots';
 
 const UserIcon = styled.div`
     display: flex;
@@ -23,6 +24,9 @@ const UserIcon = styled.div`
     }
 `;
 
+const userIcon = user => user && user.displayName ?
+    <UserIcon>{user.displayName.charAt(0).toUpperCase()}</UserIcon> : null;
+
 const Login = () => {
     // Hooks
     const { t } = useTranslation();
@@ -30,15 +34,14 @@ const Login = () => {
     const { user, logout } = useAuth();
 
     // Handle button login
-    const handleClick = () => user ? logout() :  router.push('/login');
+    const handleClick = () => user ? logout() : user != 0 && router.push('/login');
 
     return (
         <div style={{ display: 'flex' }}>
-            {user && user.displayName &&
-                <UserIcon>{user.displayName.charAt(0).toUpperCase()}</UserIcon>}
+            {userIcon(user)}
             <Button onClick={handleClick}>
                 <Fingerprint style={{ width: '1em' }} />
-                {user ? t('Logout') : t('Login')}
+                {user ? t('Logout') : user != 0 ? t('Login') : <SpinnerDots />}
             </Button>
         </div>
     );

@@ -5,7 +5,7 @@ import firebase from '../firebase';
 const authProvider = ({ children }) => {
 
     // User state
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(0);
 
     // Keep track of user state
     useEffect(async () => {
