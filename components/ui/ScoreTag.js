@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { StarFullOutline } from '@styled-icons/typicons/StarFullOutline';
 import PropTypes from 'prop-types';
@@ -32,4 +33,4 @@ ScoreTag.propTypes = {
     score: PropTypes.number.isRequired
 };
  
-export default ScoreTag;
+export default React.memo(ScoreTag);

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
@@ -14,18 +14,13 @@ const SearchMovies = () => {
     const query = useSelector(state => state.movies.query);
     const { setQuery } = actions('movies');
 
-    // Callback
-    const setQueryCallback = useCallback(
-        query => dispatch(setQuery(query)), [query],
-    );
-
     return (
         <SearchForm
             query={query}
-            setQuery={setQueryCallback}
+            setQuery={query => dispatch(setQuery(query))}
             placeholder={t('Search for a movie...')}
         />
     );
-}
+};
 
 export default React.memo(SearchMovies);

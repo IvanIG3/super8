@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import useLanguage from '../../language/useLanguage';
@@ -49,4 +48,4 @@ const LanguageSelector = () => {
     );
 }
 
-export default React.memo(LanguageSelector);
+export default LanguageSelector;

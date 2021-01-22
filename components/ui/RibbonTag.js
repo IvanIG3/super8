@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -36,4 +37,4 @@ RibbonTag.propTypes = {
     backgroundColor: PropTypes.string.isRequired,
 };
 
-export default RibbonTag;
+export default React.memo(RibbonTag);

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { SearchAlt2 } from '@styled-icons/boxicons-regular/SearchAlt2';
 
@@ -55,4 +55,4 @@ SearchForm.propTypes = {
     placeholder: PropTypes.string,
 };
  
-export default React.memo(SearchForm);
+export default SearchForm;

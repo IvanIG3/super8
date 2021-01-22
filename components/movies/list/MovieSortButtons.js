@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -20,12 +20,10 @@ const MovieSortButtons = () => {
     const sortBy = useSelector(state => state.movies.sortBy);
     const { setSortBy } = actions('movies');
 
-    const handleOnClick = useCallback(value => dispatch(setSortBy(value)), [dispatch]);
-
     return (
         <ButtonsGroup
             value={sortBy}
-            onClick={handleOnClick}
+            onClick={value => dispatch(setSortBy(value))}
         >
             <Button value='popular'>
                 <TrendingUp style={{ width: "1.5em" }} />
