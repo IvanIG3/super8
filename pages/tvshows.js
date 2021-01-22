@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -45,11 +46,13 @@ const TvshowsPage = () => {
     };
 
     // Set default list
-    if (!sortBy && !query) {
-        sortBy = 'popular';
-        dispatch(setSortBy('popular'));
-        getTvshows();
-    }
+    useEffect(() => {
+        if (!sortBy && !query) {
+            sortBy = 'popular';
+            dispatch(setSortBy('popular'));
+            getTvshows();
+        }
+    }, []);
 
     // Get update tv shows list when some var changes
     useUpdate(() => getTvshows(), [language, query, sortBy, page]);

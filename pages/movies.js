@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -45,11 +46,13 @@ const MoviesPage = () => {
     };
 
     // Set default list
-    if (!sortBy && !query) {
-        sortBy = 'popular';
-        dispatch(setSortBy('popular'));
-        getMovies();
-    }
+    useEffect(() => {
+        if (!sortBy && !query) {
+            sortBy = 'popular';
+            dispatch(setSortBy('popular'));
+            getMovies();
+        }
+    }, []);
 
     // Get update movies list when some var changes
     useUpdate(() => getMovies(), [language, query, sortBy, page]);
