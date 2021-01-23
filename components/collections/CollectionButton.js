@@ -1,7 +1,7 @@
 import Button from '../styled/Button';
 
 const CollectionButton = ({
-    textOn, textOff, active, onCheck, onUncheck
+    textOn, textOff, IconOn, IconOff, active, onCheck, onUncheck
 }) => {
     const handleClick = () => active ? onUncheck() : onCheck();
 
@@ -11,7 +11,16 @@ const CollectionButton = ({
             selected={active}
             onClick={handleClick}
         >
-            {active ? textOff : textOn}
+            {active ? 
+                <IconOff size="1em" />
+                : 
+                <IconOn size="1em" />
+            }
+            {active ? 
+                <span>{textOff}</span>
+                :
+                <span>{textOn}</span>
+            }
         </Button>
     );
 };
