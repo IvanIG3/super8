@@ -46,13 +46,7 @@ const MoviesPage = () => {
     };
 
     // Set default list
-    useEffect(() => {
-        if (!sortBy && !query) {
-            sortBy = 'popular';
-            dispatch(setSortBy('popular'));
-            getMovies();
-        }
-    }, []);
+    useEffect(() => !sortBy && !query && dispatch(setSortBy('popular')), []);
 
     // Get update movies list when some var changes
     useUpdate(() => getMovies(), [language, query, sortBy, page]);

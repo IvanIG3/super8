@@ -46,13 +46,7 @@ const TvshowsPage = () => {
     };
 
     // Set default list
-    useEffect(() => {
-        if (!sortBy && !query) {
-            sortBy = 'popular';
-            dispatch(setSortBy('popular'));
-            getTvshows();
-        }
-    }, []);
+    useEffect(() => !sortBy && !query && dispatch(setSortBy('popular')), []);
 
     // Get update tv shows list when some var changes
     useUpdate(() => getTvshows(), [language, query, sortBy, page]);
