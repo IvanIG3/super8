@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { ThMenu } from '@styled-icons/typicons/ThMenu';
@@ -76,8 +77,16 @@ const Nav = styled.nav`
 `;
 
 const NavHeader = () => {
+    // State
     const [opened, setOpened] = useState(false);
+
+    // Hooks
     const { t } = useTranslation();
+    const router = useRouter();
+
+    // Effec
+    useEffect(() => setOpened(false), [router]);
+
     return (
         <div>
             <div style={{ height: "80px" }}></div>
@@ -93,9 +102,9 @@ const NavHeader = () => {
                     <Nav opened={opened}>
                         <NavLink href="/movies">{t('Movies')}</NavLink>
                         <NavLink href="/tvshows">{t('TV Shows')}</NavLink>
-                        <NavLink href="/mylist">{t('My List')}</NavLink>
-                        <NavLink href="/seen">{t('Seen')}</NavLink>
-                        <NavLink href="/favorites">{t('Favorites')}</NavLink>
+                        <NavLink href="/collections/mylist">{t('My List')}</NavLink>
+                        <NavLink href="/collections/seen">{t('Seen')}</NavLink>
+                        <NavLink href="/collections/favorites">{t('Favorites')}</NavLink>
                     </Nav>
                 </NavContainer>
             </FixedTop>
