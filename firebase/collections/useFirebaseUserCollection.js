@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
-import useUpdate from '../../hooks/useUpdate';
 import useAuth from '../auth/useAuth';
 import firebase from '../firebase';
 import {
@@ -14,35 +13,33 @@ import {
 
 const PER_CHUNK = 1000;
 
+const getCollectionRef = async (user, collection) => {
+    await import('firebase/firestore');
+    const userRef = firebase.firestore().collection('users').doc(user.uid);
+    return userRef.collection(collection);
+};
+
+const saveCollection = async (list, user, collection) => {
+    const collectionRef = await getCollectionRef(user, collection);
+    for (let i = 0; i <= list.length; i += PER_CHUNK) {
+        await collectionRef.doc(i.toString()).set({
+            json: JSON.stringify(list.slice(i, i + PER_CHUNK))
+        });
+    }
+};
+
 const useFirebaseUserCollection = (collection) => {
     // Hooks
     const dispatch = useDispatch();
     const { user } = useAuth();
-
-    // Collection state
-    const collectionState = useSelector(state => state.firestoreCollections[collection]);
-
-    const getCollectionRef = async () => {
-        await import('firebase/firestore');
-        const userRef = firebase.firestore().collection('users').doc(user.uid);
-        return userRef.collection(collection);
-    };
-
-    const saveCollection = async () => {
-        const collectionRef = await getCollectionRef();
-        for (let i = 0; i <= collectionState.length; i += PER_CHUNK) {
-            await collectionRef.doc(i.toString()).set({
-                json: JSON.stringify(collectionState.slice(i, i + PER_CHUNK))
-            });
-        }
-    };
+    const collectionList = useSelector(state => state.firestoreCollections[collection]);
 
     // Connect to firestore
     useEffect(() => {
-        if (user && !collectionState) {
+        if (user && !collectionList) {
             (async function () {
                 try {
-                    const collectionRef = await getCollectionRef();
+                    const collectionRef = await getCollectionRef(user, collection);
                     const snapshot = await collectionRef.get();
                     const data = snapshot.docs.map(doc => {
                         const strData = Object.values(doc.data());
@@ -54,17 +51,29 @@ const useFirebaseUserCollection = (collection) => {
                 }
             })();
         }
-    }, [user]);
-
-    // Save changes made into the collection
-    useUpdate(() => saveCollection(), [collectionState]);
+    }, [user, collection]);
 
     // Collection functions
-    const addItemToCollection = async (item) => dispatch(addItem(collection, item));
-    const removeItemToCollection = async (id) => dispatch(removeItem(collection, id));
+    const addItemToCollection = async item => {
+        dispatch(addItem(collection, item));
+        saveCollection(
+            [...collectionList, item], 
+            user, 
+            collection
+        );
+    };
+
+    const removeItemToCollection = async id => {
+        dispatch(removeItem(collection, id));
+        saveCollection(
+            collectionList.filter(i => i.id !== id), 
+            user, 
+            collection
+        );
+    };
 
     return [
-        collectionState,
+        collectionList,
         addItemToCollection,
         removeItemToCollection
     ];
