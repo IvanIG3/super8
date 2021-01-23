@@ -9,5 +9,8 @@ export default combineReducers({
     tvshows: createListReducer('tvshows'),
     movie: movieReducer,
     tvshow: tvshowReducer,
+    mylist: createListReducer('mylist'),
+    seen: createListReducer('seen'),
+    favorites: createListReducer('favorites'),
     firestoreCollections: collectionReducer,
 });
