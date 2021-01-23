@@ -23,9 +23,13 @@ const StyledLink = styled.a`
 
 const NavLink = ({ children, href }) => {
     const router = useRouter();
+    const queries = Object.values(router.query);
     return (
         <Link href={href}>
-            <StyledLink active={router.pathname === href}>
+            <StyledLink active={
+                router.pathname === href ||
+                queries.some(query => href.endsWith(query))
+            }>
                 {children}
             </StyledLink>
         </Link>
