@@ -6,7 +6,7 @@ const Container = styled.div`
     padding-bottom: ${props => props.scale && `${(props.scale * 100)}%`};
     border-radius: .3em;
     font-size: 1em;
-    height: ${props => props.height && props.height};
+    height: ${props => props.height};
     width: ${props => props.width ? props.width : '100%'};
     margin-top: .5em;
     &:first-of-type {
@@ -18,7 +18,7 @@ const Skeleton = ({ scale, height, width, count }) => (
     <>
         {[...Array(count)].map((_, index) =>
             <Container key={index} width={width} height={height} scale={scale}>
-                {!height && <br />}
+                {!scale && <br />}
             </Container>
         )}
     </>
