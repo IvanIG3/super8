@@ -37,7 +37,7 @@ const Login = () => {
     const handleClick = () => user ? logout() : user != 0 && router.push('/login');
 
     return (
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
             {userIcon(user)}
             <Button onClick={handleClick}>
                 <Fingerprint style={{ width: '1em' }} />
