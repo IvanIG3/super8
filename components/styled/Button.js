@@ -11,17 +11,20 @@ const notselected = css`
 `;
 
 export default styled.button`
-    display: grid;
-    grid-auto-flow: column;
+    display: inline-flex;
     align-items: center;
-    gap: .5em;
+    justify-content: center;
     border: 1px solid ${props => props.theme.colors.primary};
     border-radius: .3em;
     padding: .7em 1em;
     font-weight: bold;
     font-size: .8em;
     white-space: nowrap;
-    ${props => props.selected ? selected : notselected}
+    ${props => props.selected ? selected : notselected};
+
+    & > * {
+        margin: 0 .3em 0 .3em;
+    }
 
     &:hover {
         ${props => !props.selected && selected}

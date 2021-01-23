@@ -41,7 +41,14 @@ const Login = () => {
             {userIcon(user)}
             <Button onClick={handleClick}>
                 <Fingerprint style={{ width: '1em' }} />
-                {user ? t('Logout') : user != 0 ? t('Login') : <SpinnerDots />}
+                {user ?
+                    <span>{t('Logout')}</span>
+                    :
+                    user !== 0 ?
+                        <span>{t('Login')}</span>
+                        :
+                        <SpinnerDots />
+                }
             </Button>
         </div>
     );
