@@ -12,6 +12,7 @@ import { Poo } from '@styled-icons/fa-solid/Poo';
 import Skeleton from '../ui/Skeleton';
 import CollectionButton from './CollectionButton';
 import useFirebaseUserCollection from '../../firebase/collections/useFirebaseUserCollection';
+import useAuth from '../../firebase/auth/useAuth';
 
 const Container = styled.div`
     display: grid;
@@ -22,6 +23,7 @@ const Container = styled.div`
 const CollectionButtonsGroup = ({ item }) => {
     // Hooks
     const { t } = useTranslation();
+    const { user } = useAuth();
     const [mylist, addToMyList, removeFromMyList] = useFirebaseUserCollection('mylist');
     const [seenlist, addToSeen, removeFromSeen] = useFirebaseUserCollection('seen');
     const [favorites, addToFavorites, removeFromFavorites] = useFirebaseUserCollection('favorites');
@@ -36,6 +38,9 @@ const CollectionButtonsGroup = ({ item }) => {
         removeFromMyList(item.id);
     };
 
+    if(!user && user !== 0) {
+        return null;
+    }
     return (
         <Container>
             {mylist && item ?
