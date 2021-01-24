@@ -44,3 +44,10 @@ export const castSelector = createSelector(
     }))
 );
 
+export const firestoreSelector = createSelector(
+    state => state.movie.movie,
+    movie => ({ 
+        ...movie,
+        type: 'movie'
+    })
+);

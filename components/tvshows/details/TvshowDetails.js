@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import ImageCard from '../../ui/ImageCard';
 import Skeleton from '../../ui/Skeleton';
 import CollectionButtonsGroup from '../../collections/CollectionButtonsGroup';
-import { tvShowSelector } from '../../../selectors/tvshowSelectors';
+import { tvShowSelector, firestoreSelector } from '../../../selectors/tvshowSelectors';
 import { getTvshow } from '../../../actions/tvshowActions';
 import useLanguage from '../../../language/useLanguage';
 import useUpdate from '../../../hooks/useUpdate';
@@ -39,6 +39,7 @@ const TvshowDetails = ({ id }) => {
     const dispatch = useDispatch();
     const { t } = useTranslation();
     const tvshow = useSelector(tvShowSelector);
+    const item = useSelector(firestoreSelector);
     const { language } = useLanguage();
 
     // Fetch tv show details
@@ -52,7 +53,7 @@ const TvshowDetails = ({ id }) => {
                 height={750}
                 width={500}
             >
-                <CollectionButtonsGroup item={tvshow}/>
+                <CollectionButtonsGroup item={item}/>
             </ImageCard>
             <div>
                 <Info>

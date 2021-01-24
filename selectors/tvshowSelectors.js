@@ -43,3 +43,10 @@ export const castSelector = createSelector(
     }))
 );
 
+export const firestoreSelector = createSelector(
+    state => state.tvshow.tvshow,
+    tvshow => ({ 
+        ...tvshow,
+        type: 'tvshow'
+    })
+);
