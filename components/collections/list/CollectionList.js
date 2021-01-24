@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 import useAuth from '../../../firebase/auth/useAuth';
+import { collectionListSelector } from '../../../selectors/collectionSelectors';
 import ImageCard from '../../ui/ImageCard';
 import Skeleton from '../../ui/Skeleton';
 import GridList from '../../styled/GridList';
@@ -20,7 +21,7 @@ const LoginSuggestion = styled.div`
 const CollectionList = ({ collection }) => {
     const { user } = useAuth();
     const { t } = useTranslation();
-    const list = useSelector(state => state[collection].list);
+    const list = useSelector(collectionListSelector(collection));
     return (
         <div style={{ flex: '1' }}>
             {user || user === 0 ?
