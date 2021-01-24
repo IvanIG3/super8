@@ -46,7 +46,7 @@ const CollectionPage = ({ collection }) => {
     const sort = () => {
         let sortedlist = collectionList.slice().sort((a, b) =>
             sortBy === 'vote_average' ?
-                b.vote_average - a.vote_average :
+                b.score - a.score :
                 a.title.localeCompare(b.title)
         );
         if (sortBy === 'tvshow' || sortBy === 'movie') {

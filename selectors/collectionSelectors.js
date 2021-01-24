@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 export const collectionListSelector = collection => createSelector(
-    state => state[collection].list,
+    state => state.firestoreCollections[collection],
     list => list && list.map(item => ({
         id: item.id,
         title: item.type === 'movie' ? item.title :
@@ -13,5 +13,6 @@ export const collectionListSelector = collection => createSelector(
         url: item.type === 'movie' ? `/movies/${item.id}` :
             item.type === 'tvshow' ? `/tvshows/${item.id}` :
                 null,
+        type: item.type,
     }))
 );

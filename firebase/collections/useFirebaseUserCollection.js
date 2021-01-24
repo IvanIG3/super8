@@ -10,6 +10,7 @@ import {
     addItemToCollection as addItem,
     removeItemFromCollection as removeItem
 } from '../../actions/collectionActions';
+import { collectionListSelector } from '../../selectors/collectionSelectors';
 
 const PER_CHUNK = 1000;
 
@@ -32,7 +33,7 @@ const useFirebaseUserCollection = (collection) => {
     // Hooks
     const dispatch = useDispatch();
     const { user } = useAuth();
-    const collectionList = useSelector(state => state.firestoreCollections[collection]);
+    const collectionList = useSelector(collectionListSelector(collection));
 
     // Connect to firestore
     useEffect(() => {
@@ -57,8 +58,8 @@ const useFirebaseUserCollection = (collection) => {
     const addItemToCollection = async item => {
         dispatch(addItem(collection, item));
         saveCollection(
-            [...collectionList, item], 
-            user, 
+            [...collectionList, item],
+            user,
             collection
         );
     };
@@ -66,8 +67,8 @@ const useFirebaseUserCollection = (collection) => {
     const removeItemToCollection = async id => {
         dispatch(removeItem(collection, id));
         saveCollection(
-            collectionList.filter(i => i.id !== id), 
-            user, 
+            collectionList.filter(i => i.id !== id),
+            user,
             collection
         );
     };

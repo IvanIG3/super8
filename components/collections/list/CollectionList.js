@@ -21,7 +21,7 @@ const LoginSuggestion = styled.div`
 const CollectionList = ({ collection }) => {
     const { user } = useAuth();
     const { t } = useTranslation();
-    const list = useSelector(collectionListSelector(collection));
+    const list = useSelector(state => state[collection].list);
     return (
         <div style={{ flex: '1' }}>
             {user || user === 0 ?
@@ -35,7 +35,7 @@ const CollectionList = ({ collection }) => {
                                     width={500}
                                 >
                                     {item.title || <Skeleton />}
-                                    {item.vote_average && <ScoreTag score={item.vote_average} />}
+                                    {item.score && <ScoreTag score={item.score} />}
                                 </ImageCard>
                             </a>
                         </Link>
