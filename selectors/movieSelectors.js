@@ -6,7 +6,7 @@ export const movieSelector = createSelector(
         id: movie.id,
         title: movie.title,
         poster_path: movie.poster_path ? 
-            `${process.env.tmdbImageURL}${movie.poster_path}` : '/no-poster.png',
+            `${process.env.tmdbBigImageURL}${movie.poster_path}` : '/no-poster.png',
         overview: movie.overview,
         score: movie.vote_average && movie.vote_count &&
             `${movie.vote_average} / 10 (${movie.vote_count})` || "0",
@@ -16,9 +16,6 @@ export const movieSelector = createSelector(
         release_date: movie.release_date,
         url: `/movies/${movie.id}`,
         type: 'movie',
-        backdrop_path: movie.backdrop_path ? 
-            `${process.env.tmdbBackdropURL}${movie.backdrop_path}` : '/no-backdrop.png',
-        vote_average: movie.vote_average,
     })
 );
 
@@ -29,7 +26,7 @@ export const movieListSelector = createSelector(
         title: movie.title,
         score: movie.vote_average,
         poster_path: movie.poster_path ? 
-            `${process.env.tmdbImageURL}${movie.poster_path}` : '/no-poster.png',
+            `${process.env.tmdbSmallImageURL}${movie.poster_path}` : '/no-poster.png',
         url: `/movies/${movie.id}`,
     }))
 );

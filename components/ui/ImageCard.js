@@ -11,8 +11,6 @@ const Card = styled.div`
 
 const CardImage = styled.div`
     width: 100%;
-    max-height: ${props => props.height && `${props.height}px`};
-    max-width: ${props => props.width && `${props.width}px`};
 `;
 
 const CardBody = styled.div`
@@ -30,7 +28,7 @@ const Image = styled(ImageNext)`
 
 const ImageCard = ({ children, src, width, height }) => (
     <Card>
-        <CardImage width={width} height={height}>
+        <CardImage>
             {src ?
                 <Image
                     src={src}

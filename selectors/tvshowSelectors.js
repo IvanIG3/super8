@@ -6,18 +6,15 @@ export const tvShowSelector = createSelector(
         id: tvshow.id,
         title: tvshow.name,
         poster_path: tvshow.poster_path ? 
-            `${process.env.tmdbImageURL}${tvshow.poster_path}` : '/no-poster.png',
+            `${process.env.tmdbBigImageURL}${tvshow.poster_path}` : '/no-poster.png',
         overview: tvshow.overview,
         score: tvshow.vote_average && tvshow.vote_count &&
-            `${tvshow.vote_average} / 100 (${tvshow.vote_count})` || "0",
+            `${tvshow.vote_average} / 10 (${tvshow.vote_count})` || "0",
         seasons: tvshow.seasons ? tvshow.seasons.length : 1,
         genres: tvshow.genres ? tvshow.genres.map(genre => genre.name).join(', ') : "-",
         first_air_date: tvshow.first_air_date,
         url: `/tvshows/${tvshow.id}`,
         type: 'tvshow',
-        backdrop_path: tvshow.backdrop_path ? 
-            `${process.env.tmdbBackdropURL}${tvshow.backdrop_path}` : '/no-backdrop.png',
-        vote_average: tvshow.vote_average,
     })
 );
 
@@ -28,7 +25,7 @@ export const tvshowListSelector = createSelector(
         title: tvshow.name,
         score: tvshow.vote_average,
         poster_path: tvshow.poster_path ? 
-            `${process.env.tmdbImageURL}${tvshow.poster_path}` : '/no-poster.png',
+            `${process.env.tmdbSmallImageURL}${tvshow.poster_path}` : '/no-poster.png',
         url: `/tvshows/${tvshow.id}`,
     }))
 );
