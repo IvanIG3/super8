@@ -2,6 +2,12 @@ import { cloneElement, Children } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+const Container = styled.div`
+    flex: 1;
+    display: grid;
+    grid-template-rows: auto 1fr;
+`;
+
 const TabsContainer = styled.div`
     display: grid;
     border-bottom: 1px solid ${props => `${props.theme.colors.textcolor}80`};
@@ -13,7 +19,7 @@ const TabsContainer = styled.div`
 `;
 
 const Tabs = ({ children, idxTab, setIdxTab }) => (
-    <div>
+    <Container>
         <TabsContainer>
             {Children.map(children, (tab, idx) => (
                 cloneElement(tab, {
@@ -25,7 +31,7 @@ const Tabs = ({ children, idxTab, setIdxTab }) => (
         <div>
             {children[idxTab].props.children}
         </div>
-    </div>
+    </Container>
 );
 
 Tabs.propTypes = {
