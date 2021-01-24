@@ -9,13 +9,13 @@ import Skeleton from '../../ui/Skeleton';
 import ScoreTag from '../../ui/ScoreTag';
 import useLanguage from '../../../language/useLanguage';
 import { getTvshowRecommendations } from '../../../actions/tvshowActions';
-import { recommendationsSelector } from '../../../selectors/tvshowSelectors';
+import { tvshowListSelector } from '../../../selectors/tvshowSelectors';
 import useUpdate from '../../../hooks/useUpdate';
 
 const TvshowRecommendations = ({ id }) => {
     // Hooks
     const dispatch = useDispatch();
-    const tvs = useSelector(recommendationsSelector);
+    const tvs = useSelector(tvshowListSelector);
     const { language } = useLanguage();
 
     // Get recommendations

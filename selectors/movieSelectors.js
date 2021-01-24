@@ -44,25 +44,3 @@ export const castSelector = createSelector(
     }))
 );
 
-export const recommendationsSelector = createSelector(
-    state => state.movie.recommendations,
-    list => list && list.map(movie => ({
-        id: movie.id,
-        title: movie.title,
-        poster_path: movie.poster_path ? 
-            `${process.env.tmdbImageURL}${movie.poster_path}` : '/no-poster.png',
-        score: movie.vote_average,
-        url: `/movies/${movie.id}`,
-    }))
-);
-
-export const previewMoviesSelector = createSelector(
-    state => state.previewMovies.list,
-    list => list && list.map(movie => ({
-        url: `/movies/${movie.id}`,
-        backdrop_path: movie.backdrop_path ? 
-            `${process.env.tmdbBackdropURL}${movie.backdrop_path}` : '/no-backdrop.png',
-        title: movie.title,
-        overview: movie.overview
-    }))
-);

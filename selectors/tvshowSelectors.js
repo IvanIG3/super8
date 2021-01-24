@@ -43,25 +43,3 @@ export const castSelector = createSelector(
     }))
 );
 
-export const recommendationsSelector = createSelector(
-    state => state.tvshow.recommendations,
-    list => list && list.map(tvshow => ({
-        id: tvshow.id,
-        title: tvshow.name,
-        poster_path: tvshow.poster_path ? 
-            `${process.env.tmdbImageURL}${tvshow.poster_path}` : '/no-poster.png',
-        score: tvshow.vote_average,
-        url: `/tvshows/${tvshow.id}`,
-    }))
-);
-
-export const previewTvshowsSelector = createSelector(
-    state => state.previewtvshows.list,
-    list => list && list.map(tvshow => ({
-        url: `/tvshows/${tvshow.id}`,
-        backdrop_path: tvshow.backdrop_path ? 
-            `${process.env.tmdbBackdropURL}${tvshow.backdrop_path}` : '/no-backdrop.png',
-        title: tvshow.name,
-        overview: tvshow.overview
-    }))
-);
