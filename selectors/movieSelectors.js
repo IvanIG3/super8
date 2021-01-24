@@ -41,6 +41,18 @@ export const castSelector = createSelector(
     }))
 );
 
+export const movieRecommendationsSelector = createSelector(
+    state => state.movie.recommendations,
+    list => list && list.map(movie => ({
+        id: movie.id,
+        title: movie.title,
+        score: movie.vote_average,
+        poster_path: movie.poster_path ? 
+            `${process.env.tmdbSmallImageURL}${movie.poster_path}` : '/no-poster.png',
+        url: `/movies/${movie.id}`,
+    }))
+);
+
 export const firestoreSelector = createSelector(
     state => state.movie.movie,
     movie => ({ 

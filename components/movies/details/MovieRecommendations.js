@@ -9,13 +9,13 @@ import Skeleton from '../../ui/Skeleton';
 import ScoreTag from '../../ui/ScoreTag';
 import useLanguage from '../../../language/useLanguage';
 import { getMovieRecommendations } from '../../../actions/movieActions';
-import { movieListSelector } from '../../../selectors/movieSelectors';
+import { movieRecommendationsSelector } from '../../../selectors/movieSelectors';
 import useUpdate from '../../../hooks/useUpdate';
 
 const MovieRecommendations = ({ id }) => {
     // Hooks
     const dispatch = useDispatch();
-    const movies = useSelector(movieListSelector);
+    const movies = useSelector(movieRecommendationsSelector);
     const { language } = useLanguage();
 
     // Get recommendations
