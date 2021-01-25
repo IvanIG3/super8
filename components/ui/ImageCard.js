@@ -11,6 +11,8 @@ const Card = styled.div`
 
 const CardImage = styled.div`
     width: 100%;
+    border: 1px solid ${props => `${props.theme.colors.textcolor}30`};
+    border-radius: .3em;
 `;
 
 const CardBody = styled.div`
