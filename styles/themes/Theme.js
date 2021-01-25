@@ -38,8 +38,8 @@ const Theme = ({ children }) => {
                 (async function () {
                     const userRef = await useUserCollection(user);
                     const data = await userRef.get();
-                    const key = data.data().theme;
-                    setTheme(themes[key]);
+                    const key = data && data.data() && data.data().theme;
+                    if(key) setTheme(themes[key]);
                 })();
             }
         } catch (error) {
