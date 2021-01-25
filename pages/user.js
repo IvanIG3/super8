@@ -33,7 +33,7 @@ const UserPage = () => {
 
     return (
         <Layout description="User page configuration">
-            <h1>{t('User page')}</h1>
+            <h1>{t('Configuration')}</h1>
             <h2 className="underline">{t('Themes')}</h2>
             <ButtonList xs={1} sm={3} md={4} lg={5}>
                 {themes.map((t, idx) =>

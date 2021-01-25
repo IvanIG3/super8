@@ -67,6 +67,8 @@ export default {
         "Details": "Detalles",
         "Cast": "Reparto",
         "Recommendations": "Recomendaciones",
+        "Configuration": "Configuración",
+        "Themes": "Temas",
         
     }
 };
