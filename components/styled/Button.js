@@ -1,13 +1,21 @@
 import styled, { css } from 'styled-components';
 
-const selected = css`
+const theme1 = css`
     background-color: ${props => props.theme.colors.primary};
     color: ${props => props.theme.colors.bgcolor};
 `;
 
-const notselected = css`
+const theme2 = css`
     background-color: rgba(0, 0, 0, 0.2);
     color: ${props => props.theme.colors.primary};
+`;
+
+const selected = css`
+    ${props => props.theme.colors.invertedButton ? theme2 : theme1}
+`;
+
+const notselected = css`
+    ${props => props.theme.colors.invertedButton ? theme1 : theme2}
 `;
 
 export default styled.button`
