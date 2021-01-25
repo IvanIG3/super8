@@ -16,11 +16,53 @@ body {
     line-height: 1.5;
 }
 
+@media (min-width: 576px) {
+    body {
+        font-size: 1.1em;
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        font-size: 1em;
+    }
+}
+
 h1 {
     border-bottom: 1px solid;
     margin: .8em 0;
     font-size: 1.6em;
     text-align: center;
+}
+
+@media (min-width: 576px) {
+    h1 {
+        font-size: 2.2em;
+    }
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+}
+
+h2 {
+    margin: .8em 0;
+    font-size: 1.4em;
+    text-align: left;
+}
+
+@media (min-width: 576px) {
+    h2 {
+        font-size: 1.6em;
+    }
+}
+
+@media (min-width: 768px) {
+    h2 {
+        font-size: 1.8em;
+    }
 }
 
 a {
@@ -45,25 +87,4 @@ select:hover {
     width: 95%;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-/* RESPONSIVE */
-@media (min-width: 576px) {
-    body {
-        font-size: 1.1em;
-    }
-
-    h1 {
-        font-size: 2.2em;
-    }
-}
-
-@media (min-width: 768px) {
-    body {
-        font-size: 1em;
-    }
-
-    h1 {
-        font-size: 2.5em;
-    }
 }

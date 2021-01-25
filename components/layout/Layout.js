@@ -10,8 +10,8 @@ import Footer from './Footer';
 const ContainerLayout = styled.div`
     background-color: ${props => props.theme.colors.bgcolor};
     color: ${props => props.theme.colors.textcolor};
-    a:hover {
-        color: ${props => props.theme.colors.primary};
+    .underline {
+        border-bottom: 1px solid ${props => `${props.theme.colors.textcolor}80`};
     }
 `;
 
