@@ -1,10 +1,12 @@
-import Button from '../styled/Button';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 import { Fingerprint } from '@styled-icons/fa-solid/Fingerprint';
 import styled from 'styled-components';
+
 import useAuth from '../../firebase/auth/useAuth';
 import SpinnerDots from '../../components/ui/SpinnerDots';
+import Button from '../styled/Button';
 
 const UserIcon = styled.div`
     display: flex;
@@ -24,9 +26,6 @@ const UserIcon = styled.div`
     }
 `;
 
-const userIcon = user => user && user.displayName ?
-    <UserIcon>{user.displayName.charAt(0).toUpperCase()}</UserIcon> : null;
-
 const Login = () => {
     // Hooks
     const { t } = useTranslation();
@@ -38,7 +37,15 @@ const Login = () => {
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-            {userIcon(user)}
+            {user && user.displayName ?
+                <Link href="/user">
+                    <UserIcon>
+                        {user.displayName.charAt(0).toUpperCase()}
+                    </UserIcon>
+                </Link>
+                :
+                null
+            }
             <Button onClick={handleClick}>
                 <Fingerprint style={{ width: '1em' }} />
                 {user ?
