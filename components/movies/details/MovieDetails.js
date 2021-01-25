@@ -31,6 +31,7 @@ const Info = styled.div`
     span {
         display: block;
         color: ${props => props.theme.colors.primary};
+        font-weight: bold;
     }
 `;
 

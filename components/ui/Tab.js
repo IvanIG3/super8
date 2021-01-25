@@ -9,6 +9,10 @@ const ContainerTab = styled.div`
         margin-bottom: .5em;
     }
 
+    span {
+        font-weight: bold;
+    }
+
     @media (min-width: 768px) {
         margin-bottom: -1px;
         &:last-of-type {
