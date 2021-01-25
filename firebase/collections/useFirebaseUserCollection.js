@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
 import useAuth from '../auth/useAuth';
-import firebase from '../firebase';
+import useUserCollection from './useUserCollection';
 import {
     addCollection,
     addItemToCollection as addItem,
@@ -14,16 +14,10 @@ import { collectionListSelector } from '../../selectors/collectionSelectors';
 
 const PER_CHUNK = 1000;
 
-const getCollectionRef = async (user, collection) => {
-    await import('firebase/firestore');
-    const userRef = firebase.firestore().collection('users').doc(user.uid);
-    return userRef.collection(collection);
-};
-
 const saveCollection = async (list, user, collection) => {
-    const collectionRef = await getCollectionRef(user, collection);
+    const userRef = await useUserCollection(user);
     for (let i = 0; i <= list.length; i += PER_CHUNK) {
-        await collectionRef.doc(i.toString()).set({
+        await userRef.collection(collection).doc(i.toString()).set({
             json: JSON.stringify(list.slice(i, i + PER_CHUNK))
         });
     }
@@ -40,8 +34,8 @@ const useFirebaseUserCollection = (collection) => {
         if (user && !collectionList) {
             (async function () {
                 try {
-                    const collectionRef = await getCollectionRef(user, collection);
-                    const snapshot = await collectionRef.get();
+                    const userRef = await useUserCollection(user);
+                    const snapshot = await userRef.collection(collection).get();
                     const data = snapshot.docs.map(doc => {
                         const strData = Object.values(doc.data());
                         return JSON.parse(strData);
