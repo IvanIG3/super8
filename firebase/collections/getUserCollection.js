@@ -1,6 +1,6 @@
 import firebase from '../firebase';
 
-const useUserCollection = async user => {
+const getUserCollection = async user => {
     try {
         await import('firebase/firestore');
         return firebase.firestore().collection('users').doc(user.uid);
@@ -9,4 +9,4 @@ const useUserCollection = async user => {
     }
 };
 
-export default useUserCollection;
+export default getUserCollection;

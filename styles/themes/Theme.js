@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components";
 import themeContext from './themeContext';
 import themes from './themes';
 import useAuth from '../../firebase/auth/useAuth';
-import useUserCollection from '../../firebase/collections/useUserCollection';
+import getUserCollection from '../../firebase/collections/getUserCollection';
 
 const Theme = ({ children }) => {
     const { user } = useAuth();
@@ -26,7 +26,7 @@ const Theme = ({ children }) => {
     const loadTheme = async key => {
         setTheme(themes[key]);
         if (user) {
-            const userRef = await useUserCollection(user);
+            const userRef = await getUserCollection(user);
             await userRef.set({ theme: key });
         }
     };
@@ -36,7 +36,7 @@ const Theme = ({ children }) => {
         try {
             if (user && !theme) {
                 (async function () {
-                    const userRef = await useUserCollection(user);
+                    const userRef = await getUserCollection(user);
                     const data = await userRef.get();
                     const key = data && data.data() && data.data().theme;
                     if(key) setTheme(themes[key]);
