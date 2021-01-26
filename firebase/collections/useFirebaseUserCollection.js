@@ -42,7 +42,7 @@ const useFirebaseUserCollection = (collection) => {
                     });
                     dispatch(addCollection(collection, data.flat()));
                 } catch (error) {
-                    toast.error(error.message, { className: 'bg-danger' });
+                    toast.error(error.message);
                 }
             })();
         }

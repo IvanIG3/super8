@@ -35,7 +35,7 @@ export default function actions(reducer) {
                     reducer,
                     payload: error.message
                 });
-                toast.error(error.message, { className: 'bg-danger' });
+                toast.error(error.message);
             }
         };
     };
@@ -62,7 +62,7 @@ export default function actions(reducer) {
                     reducer,
                     payload: error.message
                 });
-                toast.error(error.message, { className: 'bg-danger' });
+                toast.error(error.message);
             }
         };
     };

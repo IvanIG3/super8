@@ -27,7 +27,7 @@ export function getMovie(id, language) {
                 type: MOVIE_ERROR_FETCHING_INFO,
                 payload: error.response.data.msg
             });
-            toast.error(error.response.data.msg, { className: 'bg-danger' });
+            toast.error(error.response.data.msg);
         }
     };
 };
@@ -46,7 +46,7 @@ export function getMovieCast(id, language) {
                 type: MOVIE_ERROR_FETCHING_CAST,
                 payload: error.response.data.msg
             });
-            toast.error(error.response.data.msg, { className: 'bg-danger' });
+            toast.error(error.response.data.msg);
         }
     };
 };
@@ -65,7 +65,7 @@ export function getMovieRecommendations(id, language) {
                 type: MOVIE_ERROR_FETCHING_RECOMMENDATIONS,
                 payload: error.response.data.msg
             });
-            toast.error(error.response.data.msg, { className: 'bg-danger' });
+            toast.error(error.response.data.msg);
         }
     };
 };

@@ -27,7 +27,7 @@ export function getTvshow(id, language) {
                 type: TVSHOW_ERROR_FETCHING_INFO,
                 payload: error.response.data.msg
             });
-            toast.error(error.response.data.msg, { className: 'bg-danger' });
+            toast.error(error.response.data.msg);
         }
     };
 };
@@ -46,7 +46,7 @@ export function getTvshowCast(id, language) {
                 type: TVSHOW_ERROR_FETCHING_CAST,
                 payload: error.response.data.msg
             });
-            toast.error(error.response.data.msg, { className: 'bg-danger' });
+            toast.error(error.response.data.msg);
         }
     };
 };
@@ -65,7 +65,7 @@ export function getTvshowRecommendations(id, language) {
                 type: TVSHOW_ERROR_FETCHING_RECOMMENDATIONS,
                 payload: error.response.data.msg
             });
-            toast.error(error.response.data.msg, { className: 'bg-danger' });
+            toast.error(error.response.data.msg);
         }
     };
 };
