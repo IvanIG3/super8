@@ -69,6 +69,11 @@ export default {
         "Recommendations": "Recommendations",
         "Configuration": "Configuration",
         "Themes": "Themes",
+        "Are you sure? This operation cannot be reverted.": "Are you sure? This operation cannot be reverted.",
+        "Delete this account. Be careful, this operation can't be reverted.": "Delete this account. Be careful, this operation can't be reverted.",
+        "Delete account": "Delete account",
+        "Accept": "Accept",
+        "Cancel": "Cancel",
         
     }
 };
