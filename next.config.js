@@ -1,4 +1,9 @@
-module.exports = {
+const withPWA = require('next-pwa');
+
+module.exports = withPWA({
+    pwa: {
+        dest: 'public'
+    },
     env: {
         tmdbURL: 'https://api.themoviedb.org/3',
         tmdbSmallImageURL: 'https://image.tmdb.org/t/p/w342',
@@ -11,4 +16,4 @@ module.exports = {
             'image.tmdb.org',
         ],
     },
-};
+});
