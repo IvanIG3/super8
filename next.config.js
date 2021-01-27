@@ -2,7 +2,8 @@ const withPWA = require('next-pwa');
 
 module.exports = withPWA({
     pwa: {
-        dest: 'public'
+        dest: 'public',
+        disable: process.env.NODE_ENV === 'development',
     },
     env: {
         tmdbURL: 'https://api.themoviedb.org/3',
