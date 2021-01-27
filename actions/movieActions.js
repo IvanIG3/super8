@@ -10,6 +10,9 @@ import {
     MOVIE_ERROR_FETCHING_INFO,
     MOVIE_ERROR_FETCHING_CAST,
     MOVIE_ERROR_FETCHING_RECOMMENDATIONS,
+    MOVIE_START_FETCHING_VIDEOS,
+    MOVIE_END_FETCHING_VIDEOS,
+    MOVIE_ERROR_FETCHING_VIDEOS,
     MOVIE_CLEAR_STATE,
 } from '../types';
 
@@ -63,6 +66,25 @@ export function getMovieRecommendations(id, language) {
         } catch (error) {
             dispatch({
                 type: MOVIE_ERROR_FETCHING_RECOMMENDATIONS,
+                payload: error.response.data.msg
+            });
+            toast.error(error.response.data.msg);
+        }
+    };
+};
+
+export function getMovieVideos(id, language) {
+    return async dispatch => {
+        dispatch({ type: MOVIE_START_FETCHING_VIDEOS });
+        try {
+            const result = await apiTmdb(`/movie/${id}/videos`, { language });
+            dispatch({
+                type: MOVIE_END_FETCHING_VIDEOS,
+                payload: result.results
+            });
+        } catch (error) {
+            dispatch({
+                type: MOVIE_ERROR_FETCHING_VIDEOS,
                 payload: error.response.data.msg
             });
             toast.error(error.response.data.msg);

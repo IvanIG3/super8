@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import videoSelector from '../utils/videoSourceSelector';
 
 export const movieSelector = createSelector(
     state => state.movie.movie,
@@ -50,6 +51,14 @@ export const movieRecommendationsSelector = createSelector(
         poster_path: movie.poster_path ? 
             `${process.env.tmdbSmallImageURL}${movie.poster_path}` : '/no-poster.png',
         url: `/movies/${movie.id}`,
+    }))
+);
+
+export const movieVideosSelector = createSelector(
+    state => state.movie.videos,
+    videos => videos && videos.map(video => ({
+        url: videoSelector(video.key, video.site.toLowerCase()),
+        name: video.name,
     }))
 );
 

@@ -24,6 +24,10 @@ const DynamicMovieRecommendations = dynamic(
     () => import('../../components/movies/details/MovieRecommendations'),
     { ssr: false, loading: () => <Skeleton height="100%" /> }
 );
+const DynamicMovieMovies = dynamic(
+    () => import('../../components/movies/details/MovieVideos'),
+    { ssr: false, loading: () => <Skeleton height="100%" /> }
+);
 
 // Get id from params
 export async function getServerSideProps({ params: { id } }) {
@@ -61,6 +65,9 @@ const MoviePage = ({ id }) => {
                 </Tab>
                 <Tab label={t('Recommendations')}>
                     <DynamicMovieRecommendations id={id} />
+                </Tab>
+                <Tab label={t('Videos')}>
+                    <DynamicMovieMovies id={id} />
                 </Tab>
             </Tabs>
         </Layout>

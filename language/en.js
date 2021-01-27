@@ -74,6 +74,7 @@ export default {
         "Delete account": "Delete account",
         "Accept": "Accept",
         "Cancel": "Cancel",
+        "Videos": "Videos",
         
     }
 };
