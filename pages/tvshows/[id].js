@@ -24,6 +24,10 @@ const DynamicTvshowRecommendations = dynamic(
     () => import('../../components/tvshows/details/TvshowRecommendations'),
     { ssr: false, loading: () => <Skeleton height="100%" /> }
 );
+const DynamicTvshowVideos = dynamic(
+    () => import('../../components/tvshows/details/TvshowVideos'),
+    { ssr: false, loading: () => <Skeleton height="100%" /> }
+);
 
 // Get id from params
 export async function getServerSideProps({ params: { id } }) {
@@ -61,6 +65,9 @@ const TvshowPage = ({ id }) => {
                 </Tab>
                 <Tab label={t('Recommendations')}>
                     <DynamicTvshowRecommendations id={id} />
+                </Tab>
+                <Tab label={t('Videos')}>
+                    <DynamicTvshowVideos id={id} />
                 </Tab>
             </Tabs>
         </Layout>

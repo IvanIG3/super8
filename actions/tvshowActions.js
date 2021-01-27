@@ -10,6 +10,9 @@ import {
     TVSHOW_ERROR_FETCHING_INFO,
     TVSHOW_ERROR_FETCHING_CAST,
     TVSHOW_ERROR_FETCHING_RECOMMENDATIONS,
+    TVSHOW_START_FETCHING_VIDEOS,
+    TVSHOW_END_FETCHING_VIDEOS,
+    TVSHOW_ERROR_FETCHING_VIDEOS,
     TVSHOW_CLEAR_STATE,
 } from '../types';
 
@@ -63,6 +66,25 @@ export function getTvshowRecommendations(id, language) {
         } catch (error) {
             dispatch({
                 type: TVSHOW_ERROR_FETCHING_RECOMMENDATIONS,
+                payload: error.response.data.msg
+            });
+            toast.error(error.response.data.msg);
+        }
+    };
+};
+
+export function getTvshowVideos(id, language) {
+    return async dispatch => {
+        dispatch({ type: TVSHOW_START_FETCHING_VIDEOS });
+        try {
+            const result = await apiTmdb(`/tv/${id}/videos`, { language });
+            dispatch({
+                type: TVSHOW_END_FETCHING_VIDEOS,
+                payload: result.results
+            });
+        } catch (error) {
+            dispatch({
+                type: TVSHOW_ERROR_FETCHING_VIDEOS,
                 payload: error.response.data.msg
             });
             toast.error(error.response.data.msg);
