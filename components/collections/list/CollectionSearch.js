@@ -11,7 +11,7 @@ const CollectionSearch = ({ collection }) => {
     const dispatch = useDispatch();
 
     // Redux
-    const query = useSelector(state => state[collection].query);
+    const query = useSelector(state => state[collection] && state[collection].query);
     const { setQuery } = actions(collection);
 
     return (

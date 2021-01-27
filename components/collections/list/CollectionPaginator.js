@@ -8,15 +8,15 @@ const CollectionPaginator = ({ collection }) => {
     const dispatch = useDispatch();
 
     // Redux
-    const page = useSelector(state => state[collection].page);
-    const totalPages = useSelector(state => state[collection].totalPages);
+    const page = useSelector(state => state[collection] && state[collection].page);
+    const totalPages = useSelector(state => state[collection] && state[collection].totalPages);
     const { setPage } = actions(collection);
 
     return (
         <Paginator 
-            page={page}
+            page={page || 1}
             setPage={page => dispatch(setPage(page))}
-            totalPages={totalPages}
+            totalPages={totalPages || 1}
         />
     );
 };

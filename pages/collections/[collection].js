@@ -29,9 +29,9 @@ const CollectionPage = ({ collection }) => {
     const [collectionList] = useFirebaseUserCollection(collection);
 
     // Redux
-    let sortBy = useSelector(state => state[collection].sortBy);
-    const page = useSelector(state => state[collection].page);
-    const query = useSelector(state => state[collection].query);
+    let sortBy = useSelector(state => state[collection] && state[collection].sortBy);
+    const page = useSelector(state => state[collection] && state[collection].page);
+    const query = useSelector(state => state[collection] && state[collection].query);
     const { searchList, sortList, setSortBy } = actions(collection);
 
     // Filter functions

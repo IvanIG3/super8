@@ -17,7 +17,7 @@ const CollectionSortButtons = ({ collection }) => {
     const dispatch = useDispatch();
 
     // State
-    const sortBy = useSelector(state => state[collection].sortBy);
+    const sortBy = useSelector(state => state[collection] && state[collection].sortBy);
     const { setSortBy } = actions(collection);
 
     return (

@@ -21,7 +21,7 @@ const LoginSuggestion = styled.div`
 const CollectionList = ({ collection }) => {
     const { user } = useAuth();
     const { t } = useTranslation();
-    const list = useSelector(state => state[collection].list);
+    const list = useSelector(state => state[collection] && state[collection].list);
     return (
         <div style={{ flex: '1' }}>
             {user || user === 0 ?
