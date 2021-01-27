@@ -24,6 +24,7 @@ const SearchForm = ({ query, setQuery, placeholder }) => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        e.target.blur();
         setQuery(ref.current);
     };
 
