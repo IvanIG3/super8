@@ -30,10 +30,17 @@ const Login = () => {
     // Hooks
     const { t } = useTranslation();
     const router = useRouter();
-    const { user, logout } = useAuth();
+    const { user, logout, saveLocation } = useAuth();
 
     // Handle button login
-    const handleClick = () => user ? logout() : user != 0 && router.push('/login');
+    const handleClick = () => {
+        saveLocation();
+        if (user) {
+            logout();
+        } else if (user != 0) {
+            router.push('/login');
+        }
+    };
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>

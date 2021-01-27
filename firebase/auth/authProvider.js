@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import authContext from './authContext';
 import firebase from '../firebase';
 
 const authProvider = ({ children }) => {
+    // Hooks
+    const router = useRouter();
 
     // User state
     const [user, setUser] = useState(0);
+    const [location, setLocation] = useState("/");
 
     // Keep track of user state
     useEffect(async () => {
@@ -38,13 +42,25 @@ const authProvider = ({ children }) => {
         }
     };
 
+    // Back to current location after login
+    const saveLocation = () => {
+        const currentLocation = router.asPath;
+        if (!['/login', '/register'].includes(currentLocation)) {
+            setLocation(currentLocation);
+        }
+    };
+
+    const backToLocation = () => router.push(location);
+
     return (
         <authContext.Provider
             value={{
                 user,
                 loginWithEmail,
                 logout,
-                createUser
+                createUser,
+                saveLocation,
+                backToLocation
             }}
         >
             {children}

@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components';
@@ -34,15 +33,14 @@ const Form = styled.form`
 const Register = () => {
     // Hooks
     const { t } = useTranslation();
-    const { createUser } = useAuth();
-    const router = useRouter();
+    const { createUser, backToLocation } = useAuth();
 
     const handleSubmit = async ({ name, email, password }) => {
         const error = await createUser(name, email, password);
         if (error) {
             toast.error(t(error));
         } else {
-            router.push('/');
+            backToLocation();
         }
     };
 
