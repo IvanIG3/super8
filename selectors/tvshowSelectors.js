@@ -38,6 +38,7 @@ export const castSelector = createSelector(
             `${process.env.tmdbProfileURL}${actor.profile_path}` : '/no-poster.png',
         name: actor.name,
         character: actor.roles && actor.roles.length > 0 && actor.roles[0].character,
+        url: `/actors/${actor.id}`,
     }))
 );
 
