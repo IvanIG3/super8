@@ -29,7 +29,10 @@ const Tabs = ({ children, idxTab, setIdxTab }) => (
             ))}
         </TabsContainer>
         <div>
-            {children[idxTab].props.children}
+            {children[idxTab] ?
+                children[idxTab].props.children :
+                children.props.children
+            }
         </div>
     </Container>
 );
