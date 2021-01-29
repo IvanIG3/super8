@@ -15,6 +15,11 @@ const DynamicActorDetails = dynamic(
     () => import('../../components/actors/details/ActorDetails'),
     { ssr: false, loading: () => <Skeleton height="100%" /> }
 );
+const DynamicActorCredits = dynamic(
+    () => import('../../components/actors/details/ActorCredits'),
+    { ssr: false, loading: () => <Skeleton height="100%" /> }
+);
+
 
 // Get id from params
 export async function getServerSideProps({ params: { id } }) {
@@ -44,6 +49,9 @@ const ActorsPage = ({ id }) => {
             <Tabs idxTab={tab} setIdxTab={setTab}>
                 <Tab label={t('Details')}>
                     <DynamicActorDetails id={id} />
+                </Tab>
+                <Tab label={t('Credits')}>
+                    <DynamicActorCredits id={id} />
                 </Tab>
             </Tabs>
         </Layout>

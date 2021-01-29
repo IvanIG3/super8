@@ -12,3 +12,14 @@ export const actorInfoSelector = createSelector(
         place_of_birth: actor.place_of_birth,
     })
 );
+
+export const actorCreditsSelector = createSelector(
+    state => state.actor.credits,
+    credits => credits && credits.cast && credits.cast.map(credit => ({
+        id: credit.id,
+        title: credit.media_type === 'movie' ? credit.title : credit.name,
+        poster_path: credit.poster_path ?
+            `${process.env.tmdbSmallImageURL}${credit.poster_path}` : '/no-poster.png',
+        url: credit.media_type === 'movie' ? `/movies/${credit.id}` : `/tvshows/${credit.id}`
+    }))
+);
