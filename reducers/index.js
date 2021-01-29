@@ -8,6 +8,7 @@ import actorReducer from './actorReducer';
 export default combineReducers({
     movies: createListReducer('movies'),
     tvshows: createListReducer('tvshows'),
+    actors: createListReducer('actors'),
     movie: movieReducer,
     tvshow: tvshowReducer,
     actor: actorReducer,

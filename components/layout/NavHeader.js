@@ -102,6 +102,7 @@ const NavHeader = () => {
                     <Nav opened={opened}>
                         <NavLink href="/movies">{t('Movies')}</NavLink>
                         <NavLink href="/tvshows">{t('TV Shows')}</NavLink>
+                        <NavLink href="/actors">{t('Actors')}</NavLink>
                         <NavLink href="/collections/mylist">{t('My List')}</NavLink>
                         <NavLink href="/collections/seen">{t('Seen')}</NavLink>
                         <NavLink href="/collections/favorites">{t('Favorites')}</NavLink>

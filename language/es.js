@@ -78,6 +78,9 @@ export default {
         "Birthday": "Fecha de nacimiento",
         "Place of birth": "Lugar de nacimiento",
         "Biography": "Biografía",
+        "Credits": "Créditos",
+        "Actors": "Actores",
+        "Search for an actor/actress...": "Busca por un actor/actriz...",
 
     }
 };
