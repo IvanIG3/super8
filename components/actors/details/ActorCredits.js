@@ -9,6 +9,7 @@ import useLanguage from '../../../language/useLanguage';
 import GridList from '../../styled/GridList';
 import ImageCard from '../../ui/ImageCard';
 import Skeleton from '../../ui/Skeleton';
+import ScoreTag from '../../ui/ScoreTag';
 
 const ActorCredits = ({ id }) => {
     // Hooks
@@ -31,6 +32,7 @@ const ActorCredits = ({ id }) => {
                             height={600}
                         >
                             {credit.title || <Skeleton />}
+                            {credit.score && <ScoreTag score={credit.score} />}
                         </ImageCard>
                     </a>
                 </Link>

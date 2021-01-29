@@ -20,6 +20,7 @@ export const actorCreditsSelector = createSelector(
         title: credit.media_type === 'movie' ? credit.title : credit.name,
         poster_path: credit.poster_path ?
             `${process.env.tmdbSmallImageURL}${credit.poster_path}` : '/no-poster.png',
-        url: credit.media_type === 'movie' ? `/movies/${credit.id}` : `/tvshows/${credit.id}`
+        url: credit.media_type === 'movie' ? `/movies/${credit.id}` : `/tvshows/${credit.id}`,
+        score: credit.vote_average
     }))
 );
