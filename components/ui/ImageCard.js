@@ -50,7 +50,7 @@ const ImageCard = ({ children, src, width, height }) => (
 );
 
 ImageCard.propTypes = {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
     src: PropTypes.string,
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,

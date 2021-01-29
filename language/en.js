@@ -75,6 +75,9 @@ export default {
         "Accept": "Accept",
         "Cancel": "Cancel",
         "Videos": "Videos",
+        "Birthday": "Birthday",
+        "Place of birth": "Place of birth",
+        "Biography": "Biography",
         
     }
 };
