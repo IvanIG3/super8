@@ -9,6 +9,7 @@ module.exports = withPWA({
         tmdbURL: 'https://api.themoviedb.org/3',
         tmdbSmallImageURL: 'https://image.tmdb.org/t/p/w342',
         tmdbBigImageURL: 'https://image.tmdb.org/t/p/w780',
+        tmdbOriginalImageURL: 'https://image.tmdb.org/t/p/original',
         tmdbProfileURL: 'http://image.tmdb.org/t/p/h632',
         defaultLanguage: 'es-ES',
     },
