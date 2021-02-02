@@ -7,6 +7,9 @@ import {
     INDEX_START_NEW_MOVIES,
     INDEX_END_NEW_MOVIES,
     INDEX_ERROR_NEW_MOVIES,
+    INDEX_START_NEW_TVSHOWS,
+    INDEX_END_NEW_TVSHOWS,
+    INDEX_ERROR_NEW_TVSHOWS,
 } from '../types';
 
 export const trendingList = (language) => {
@@ -40,6 +43,25 @@ export const newMoviesList = (language) => {
         } catch (error) {
             dispatch({
                 type: INDEX_ERROR_NEW_MOVIES,
+                payload: error.message
+            });
+            toast.error(error.message);
+        }
+    };
+};
+
+export const newTvshowsList = (language) => {
+    return async dispatch => {
+        dispatch({ type: INDEX_START_NEW_TVSHOWS });
+        try {
+            const list = await apiTmdb('/tv/on_the_air', { language });
+            dispatch({
+                type: INDEX_END_NEW_TVSHOWS,
+                payload: list.results
+            });
+        } catch (error) {
+            dispatch({
+                type: INDEX_ERROR_NEW_TVSHOWS,
                 payload: error.message
             });
             toast.error(error.message);

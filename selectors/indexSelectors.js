@@ -24,3 +24,15 @@ export const newMoviesSelector = createSelector(
         url: `/movies/${movie.id}`,
     }))
 );
+
+export const newTvshowsSelector = createSelector(
+    state => state.index.newTvshows,
+    newTvshows => newTvshows && newTvshows.map(tv => ({
+        id: tv.id,
+        title: tv.name,
+        score: tv.vote_average,
+        poster_path: tv.poster_path ?
+            `${process.env.tmdbSmallImageURL}${tv.poster_path}` : '/no-poster.png',
+        url: `/tvshows/${tv.id}`,
+    }))
+);

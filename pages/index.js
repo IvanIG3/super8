@@ -13,6 +13,10 @@ const DynamicNewMovies = dynamic(
     () => import('../components/index/NewMovies'),
     { loading: () => <Skeleton height="100%" /> }
 );
+const DynamicNewTvshows = dynamic(
+    () => import('../components/index/NewTvshows'),
+    { loading: () => <Skeleton height="100%" /> }
+);
 
 const Index = () => {
     // Hooks
@@ -23,6 +27,8 @@ const Index = () => {
             <DynamicTrending />
             <h2 className="underline">{t('New Movies')}</h2>
             <DynamicNewMovies />
+            <h2 className="underline">{t('New TV Shows')}</h2>
+            <DynamicNewTvshows />
         </Layout>
     );
 };
