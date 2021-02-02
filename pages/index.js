@@ -24,11 +24,17 @@ const Index = () => {
 
     return (
         <Layout description="List of best and trending Movies and TV Shows">
-            <DynamicTrending />
-            <h2 className="underline">{t('New Movies')}</h2>
-            <DynamicNewMovies />
-            <h2 className="underline">{t('New TV Shows')}</h2>
-            <DynamicNewTvshows />
+            <div style={{ margin: '2rem 0' }}>
+                <DynamicTrending />
+            </div>
+            <div style={{ marginBottom: '2rem 0' }}>
+                <h2 className="underline">{t('New Movies')}</h2>
+                <DynamicNewMovies />
+            </div>
+            <div style={{ margin: '2rem 0' }}>
+                <h2 className="underline">{t('New TV Shows')}</h2>
+                <DynamicNewTvshows />
+            </div>
         </Layout>
     );
 };
