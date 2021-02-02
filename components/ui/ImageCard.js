@@ -7,6 +7,7 @@ import Skeleton from './Skeleton';
 const Card = styled.div`
     overflow: hidden;
     position: relative;
+    min-width: 150px;
 `;
 
 const CardImage = styled.div`
