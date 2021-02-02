@@ -81,6 +81,8 @@ export default {
         "Credits": "Créditos",
         "Actors": "Actores",
         "Search for an actor/actress...": "Busca por un actor/actriz...",
+        "New Movies": "Nuevas Películas",
+        "New TV Shows": "Nuevas Series",
 
     }
 };

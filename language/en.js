@@ -81,6 +81,8 @@ export default {
         "Credits": "Credits",
         "Actors": "Actors",
         "Search for an actor/actress...": "Search for an actor/actress...",
-        
+        "New Movies": "New Movies",
+        "New TV Shows": "New TV Shows",
+
     }
 };
