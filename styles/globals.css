@@ -84,7 +84,19 @@ select:hover {
 
 /* UTILITY */
 .container {
-    width: 95%;
-    max-width: 1200px;
+    width: 100%;
+    max-width: 92vw;
     margin: 0 auto;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 95vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
 }
