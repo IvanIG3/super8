@@ -7,14 +7,6 @@ import NavHeader from './NavHeader';
 import UserBar from './UserBar';
 import Footer from './Footer';
 
-const ContainerLayout = styled.div`
-    background-color: ${props => props.theme.colors.bgcolor};
-    color: ${props => props.theme.colors.textcolor};
-    .underline {
-        border-bottom: 1px solid ${props => `${props.theme.colors.textcolor}80`};
-    }
-`;
-
 const BurgerContent = styled.div`
     display: grid;
     min-height: 100vh;
@@ -34,16 +26,14 @@ const Layout = ({ children, description }) => (
             <meta name="description" content={description} key="description" />
         </Head>
         <ToastContainer />
-        <ContainerLayout>
-            <BurgerContent>
-                <NavHeader />
-                <UserBar />
-                <Main className="container">
-                    {children}
-                </Main>
-                <Footer />
-            </BurgerContent>
-        </ContainerLayout>
+        <BurgerContent>
+            <NavHeader />
+            <UserBar />
+            <Main className="container">
+                {children}
+            </Main>
+            <Footer />
+        </BurgerContent>
     </>
 );
 

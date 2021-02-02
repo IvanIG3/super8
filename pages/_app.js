@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 // Styles
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/fonts.css';
-import '../styles/globals.css';
 import Theme from '../styles/themes/Theme';
+import GlobalStyle from '../styles/GlobalStyle';
 
 // Translations
 import '../language';
@@ -24,6 +24,7 @@ const MyApp = ({ Component, pageProps }) => (
             <AuthProvider>
                 <LanguageProvider>
                     <Theme>
+                        <GlobalStyle />
                         <Component {...pageProps} />
                     </Theme>
                 </LanguageProvider>
