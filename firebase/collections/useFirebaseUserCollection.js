@@ -5,12 +5,7 @@ import PropTypes from 'prop-types';
 
 import useAuth from '../auth/useAuth';
 import getUserCollection from './getUserCollection';
-import {
-    addCollection,
-    addItemToCollection as addItem,
-    removeItemFromCollection as removeItem
-} from '../../actions/collectionActions';
-import { collectionListSelector } from '../../selectors/collectionSelectors';
+import actions from '../../actions/collectionActions';
 
 const PER_CHUNK = 1000;
 
@@ -27,7 +22,10 @@ const useFirebaseUserCollection = (collection) => {
     // Hooks
     const dispatch = useDispatch();
     const { user } = useAuth();
-    const collectionList = useSelector(collectionListSelector(collection));
+    const collectionList = useSelector(state => state.firestoreCollections[collection]);
+
+    // Actions
+    const { addCollection, addItem, removeItem } = actions(collection);
 
     // Connect to firestore
     useEffect(() => {
@@ -40,7 +38,7 @@ const useFirebaseUserCollection = (collection) => {
                         const strData = Object.values(doc.data());
                         return JSON.parse(strData);
                     });
-                    dispatch(addCollection(collection, data.flat()));
+                    dispatch(addCollection(data.flat()));
                 } catch (error) {
                     toast.error(error.message);
                 }
@@ -50,7 +48,7 @@ const useFirebaseUserCollection = (collection) => {
 
     // Collection functions
     const addItemToCollection = async item => {
-        dispatch(addItem(collection, item));
+        dispatch(addItem(item));
         saveCollection(
             [...collectionList, item],
             user,
@@ -59,7 +57,7 @@ const useFirebaseUserCollection = (collection) => {
     };
 
     const removeItemToCollection = async id => {
-        dispatch(removeItem(collection, id));
+        dispatch(removeItem(id));
         saveCollection(
             collectionList.filter(i => i.id !== id),
             user,
