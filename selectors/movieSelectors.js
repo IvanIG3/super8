@@ -65,8 +65,13 @@ export const movieVideosSelector = createSelector(
 
 export const firestoreSelector = createSelector(
     state => state.movie.movie,
-    movie => ({ 
-        ...movie,
+    movie => movie && ({ 
+        id: movie.id,
+        title: movie.title,
+        score: movie.vote_average,
+        poster_path: movie.poster_path ?
+            `${process.env.tmdbSmallImageURL}${movie.poster_path}` : '/no-poster.png',
+        url: `/movies/${movie.id}`,
         type: 'movie'
     })
 );

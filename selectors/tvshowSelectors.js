@@ -64,8 +64,13 @@ export const tvshowVideosSelector = createSelector(
 
 export const firestoreSelector = createSelector(
     state => state.tvshow.tvshow,
-    tvshow => ({ 
-        ...tvshow,
+    tv => tv && ({ 
+        id: tv.id,
+        title: tv.name,
+        score: tv.vote_average,
+        poster_path: tv.poster_path ?
+            `${process.env.tmdbSmallImageURL}${tv.poster_path}` : '/no-poster.png',
+        url: `/tvshows/${tv.id}`,
         type: 'tvshow'
     })
 );

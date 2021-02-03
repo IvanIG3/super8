@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 import useAuth from '../../../firebase/auth/useAuth';
-import { collectionListSelector } from '../../../selectors/collectionSelectors';
 import ImageCard from '../../ui/ImageCard';
 import Skeleton from '../../ui/Skeleton';
 import GridList from '../../styled/GridList';

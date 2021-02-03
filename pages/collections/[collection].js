@@ -71,7 +71,7 @@ const CollectionPage = ({ collection }) => {
     useEffect(() => !sortBy && !query && dispatch(setSortBy('title')), [collection]);
 
     // Update list when some var changes
-    useUpdate(() => getItems(), [language, query, sortBy, page, collectionList]);
+    useEffect(() => getItems(), [language, query, sortBy, page, collectionList]);
 
     // Back to top when moving to another page
     useUpdate(() =>
