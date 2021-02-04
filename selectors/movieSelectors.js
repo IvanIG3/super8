@@ -7,7 +7,7 @@ export const movieSelector = createSelector(
         id: movie.id,
         title: movie.title,
         poster_path: movie.poster_path ? 
-            `${process.env.tmdbBigImageURL}${movie.poster_path}` : '/no-poster.png',
+            `${process.env.tmdbMediumImageURL}${movie.poster_path}` : '/no-poster.png',
         overview: movie.overview,
         score: movie.vote_average && movie.vote_count &&
             `${movie.vote_average} / 10 (${movie.vote_count})` || "0",
@@ -36,7 +36,7 @@ export const castSelector = createSelector(
     state => state.movie.cast,
     cast => cast && cast.map(actor => ({
         profile_path: actor.profile_path ?
-            `${process.env.tmdbProfileURL}${actor.profile_path}` : '/no-poster.png',
+            `${process.env.tmdbSmallImageURL}${actor.profile_path}` : '/no-poster.png',
         name: actor.name,
         character: actor.character,
         url: `/actors/${actor.id}`,
