@@ -36,3 +36,27 @@ export const newTvshowsSelector = createSelector(
         url: `/tvshows/${tv.id}`,
     }))
 );
+
+export const bestMoviesSelector = createSelector(
+    state => state.index.bestMovies,
+    bestMovies => bestMovies && bestMovies.map(movie => ({
+        id: movie.id,
+        title: movie.title,
+        score: movie.vote_average,
+        backdrop_path: movie.backdrop_path ?
+            `${process.env.tmdbOriginalImageURL}${movie.backdrop_path}` : '/no-backdrop.png',
+        url: `/movies/${movie.id}`,
+    })).slice(0, 10)
+);
+
+export const bestTvshowsSelector = createSelector(
+    state => state.index.bestTvshows,
+    bestTvshows => bestTvshows && bestTvshows.map(tv => ({
+        id: tv.id,
+        title: tv.name,
+        score: tv.vote_average,
+        backdrop_path: tv.backdrop_path ?
+            `${process.env.tmdbOriginalImageURL}${tv.backdrop_path}` : '/no-backdrop.png',
+        url: `/tvshows/${tv.id}`,
+    })).slice(0, 10)
+);

@@ -10,6 +10,12 @@ import {
     INDEX_START_NEW_TVSHOWS,
     INDEX_END_NEW_TVSHOWS,
     INDEX_ERROR_NEW_TVSHOWS,
+    INDEX_START_BEST_MOVIES,
+    INDEX_END_BEST_MOVIES,
+    INDEX_ERROR_BEST_MOVIES,
+    INDEX_START_BEST_TVSHOWS,
+    INDEX_END_BEST_TVSHOWS,
+    INDEX_ERROR_BEST_TVSHOWS,
 } from '../types';
 
 export const trendingList = (language) => {
@@ -62,6 +68,58 @@ export const newTvshowsList = (language) => {
         } catch (error) {
             dispatch({
                 type: INDEX_ERROR_NEW_TVSHOWS,
+                payload: error.message
+            });
+            toast.error(error.message);
+        }
+    };
+};
+
+export const bestMoviesList = (language) => {
+    return async dispatch => {
+        dispatch({ type: INDEX_START_BEST_MOVIES });
+        try {
+            const date = new Date();
+            date.setFullYear(date.getFullYear() - 1);
+            const list = await apiTmdb('/discover/movie', {
+                language,
+                sort_by: 'vote_average.desc',
+                'primary_release_date.gte': date.toISOString().split('T')[0],
+                'vote_count.gte': 500,
+            });
+            dispatch({
+                type: INDEX_END_BEST_MOVIES,
+                payload: list.results
+            });
+        } catch (error) {
+            dispatch({
+                type: INDEX_ERROR_BEST_MOVIES,
+                payload: error.message
+            });
+            toast.error(error.message);
+        }
+    };
+};
+
+export const bestTvshowsList = (language) => {
+    return async dispatch => {
+        dispatch({ type: INDEX_START_BEST_TVSHOWS });
+        try {
+            const date = new Date();
+            date.setFullYear(date.getFullYear() - 1);
+            const list = await apiTmdb('/discover/tv', {
+                language,
+                sort_by: 'vote_average.desc',
+                'first_air_date.gte': date.toISOString().split('T')[0],
+                'vote_count.gte': 500,
+            });
+            dispatch({
+                type: INDEX_END_BEST_TVSHOWS,
+                payload: list.results
+            });
+        } catch (error) {
+            dispatch({
+                type: INDEX_ERROR_BEST_TVSHOWS,
                 payload: error.message
             });
             toast.error(error.message);

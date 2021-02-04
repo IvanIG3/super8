@@ -38,8 +38,8 @@ const Trending = () => {
                 </ImageSlider>
                 :
                 <>
-                    <Skeleton scale={1350/2400}/>
-                    <Skeleton height='4em'/>
+                    <Skeleton scale={1350 / 2400} />
+                    <Skeleton height='4em' />
                 </>
             }
         </div>

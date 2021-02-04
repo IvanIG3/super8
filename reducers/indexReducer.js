@@ -8,6 +8,12 @@ import {
     INDEX_START_NEW_TVSHOWS,
     INDEX_END_NEW_TVSHOWS,
     INDEX_ERROR_NEW_TVSHOWS,
+    INDEX_START_BEST_MOVIES,
+    INDEX_END_BEST_MOVIES,
+    INDEX_ERROR_BEST_MOVIES,
+    INDEX_START_BEST_TVSHOWS,
+    INDEX_END_BEST_TVSHOWS,
+    INDEX_ERROR_BEST_TVSHOWS,
 } from '../types';
 
 const initialState = {
@@ -15,13 +21,13 @@ const initialState = {
     newMovies: null,
     newTvshows: null,
     bestMovies: null,
-    bestTvshwos: null,
+    bestTvshows: null,
     error: {
         trending: null,
         newMovies: null,
         newTvshows: null,
         bestMovies: null,
-        bestTvshwos: null,
+        bestTvshows: null,
     },
 };
 
@@ -41,6 +47,16 @@ const indexReducer = (state = initialState, action) => {
             return {
                 ...state,
                 newTvshows: null
+            };
+        case INDEX_START_BEST_MOVIES:
+            return {
+                ...state,
+                bestMovies: null
+            };
+        case INDEX_START_BEST_TVSHOWS:
+            return {
+                ...state,
+                bestTvshows: null
             };
         case INDEX_END_TRENDING:
             return {
@@ -69,6 +85,24 @@ const indexReducer = (state = initialState, action) => {
                 },
                 newTvshows: action.payload
             };
+        case INDEX_END_BEST_MOVIES:
+            return {
+                ...state,
+                error: {
+                    ...state.error,
+                    bestMovies: null
+                },
+                bestMovies: action.payload
+            };
+        case INDEX_END_BEST_TVSHOWS:
+            return {
+                ...state,
+                error: {
+                    ...state.error,
+                    bestTvshows: null
+                },
+                bestTvshows: action.payload
+            };
         case INDEX_ERROR_TRENDING:
             return {
                 ...state,
@@ -91,6 +125,22 @@ const indexReducer = (state = initialState, action) => {
                 error: {
                     ...state.error,
                     newTvshows: action.payload
+                }
+            };
+        case INDEX_ERROR_BEST_MOVIES:
+            return {
+                ...state,
+                error: {
+                    ...state.error,
+                    bestMovies: action.payload
+                }
+            };
+        case INDEX_ERROR_BEST_TVSHOWS:
+            return {
+                ...state,
+                error: {
+                    ...state.error,
+                    bestTvshows: action.payload
                 }
             };
         default:
