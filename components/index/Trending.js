@@ -14,7 +14,7 @@ const Trending = () => {
     // Hooks
     const router = useRouter();
     const dispatch = useDispatch();
-    const language = useLanguage();
+    const { language } = useLanguage();
     const list = useSelector(trendingSelector);
 
     // Get trending list

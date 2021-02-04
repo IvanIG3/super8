@@ -22,7 +22,7 @@ const TvshowCast = ({ id }) => {
     // Hooks
     const dispatch = useDispatch();
     const cast = useSelector(castSelector);
-    const language = useLanguage();
+    const { language } = useLanguage();
 
     // Fetch tv cast
     useEffect(() => !cast && dispatch(getTvshowCast(id, language)), []);

@@ -22,7 +22,7 @@ const MovieCast = ({ id }) => {
     // Hooks
     const dispatch = useDispatch();
     const cast = useSelector(castSelector);
-    const language = useLanguage();
+    const { language } = useLanguage();
 
     // Fetch movie cast
     useEffect(() => !cast && dispatch(getMovieCast(id, language)), []);

@@ -13,7 +13,7 @@ import ScoreTag from '../ui/ScoreTag';
 const NewMovies = () => {
     // Hooks
     const dispatch = useDispatch();
-    const language = useLanguage();
+    const { language } = useLanguage();
     const list = useSelector(newMoviesSelector);
 
     // Get trending list

@@ -13,7 +13,7 @@ import ScoreTag from '../../ui/ScoreTag';
 
 const ActorCredits = ({ id }) => {
     // Hooks
-    const language = useLanguage();
+    const { language } = useLanguage();
     const dispatch = useDispatch();
     const credits = useSelector(actorCreditsSelector);
 
@@ -40,5 +40,5 @@ const ActorCredits = ({ id }) => {
         </GridList>
     );
 };
- 
+
 export default ActorCredits;
