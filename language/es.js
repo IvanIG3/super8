@@ -83,6 +83,8 @@ export default {
         "Search for an actor/actress...": "Busca por un actor/actriz...",
         "New Movies": "Nuevas Películas",
         "New TV Shows": "Nuevas Series",
+        "Best Movies of the Year": "Las mejores películas del año",
+        "Best TV Shows of the Year": "Las mejores series del año",
 
     }
 };

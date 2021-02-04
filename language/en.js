@@ -83,6 +83,8 @@ export default {
         "Search for an actor/actress...": "Search for an actor/actress...",
         "New Movies": "New Movies",
         "New TV Shows": "New TV Shows",
-
+        "Best Movies of the Year": "Best Movies of the Year",
+        "Best TV Shows of the Year": "Best TV Shows of the Year",
+        
     }
 };
